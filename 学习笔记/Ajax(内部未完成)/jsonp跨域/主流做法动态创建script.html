@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		/*
+			动态创建的请求是异步请求
+
+			服务器端返回的是函数调用 foo(实参)
+		*/
+		function foo(data) {
+			console.log(data.username,data.password);
+		}
+
+		var flag = 1;
+		var script = document.createElement('script');
+		script.src = 'http://www.myweb.com?flag=' + flag;
+		var head = document.getElementsByTagName('head')[0];
+		head.appendChild(script);
+	</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+后台被请求的php接口
+	<?php
+		$arr = array("username"=>"zs","password"=>"123456");
+		echo 'foo('.json_encode($arr).')';
+
+		//json_encode是转码的函数
+	?>
+
+
+
+
+	-------------------------------------------------------------------------
+	以上的做法 使得函数名不够灵活 前端和后端都要设置同样
+
+	但是下面
+		前端把函数名通过url参数的方式传递给后端 后端再获取对应的参数名 返回调用该函数的字符串
+
+
+	<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		/*
+			动态创建的请求是异步请求
+
+			服务器端返回的是函数调用 foo(实参)
+		*/
+		function emm(data) {
+			console.log(data.username,data.password);
+		}
+
+		var flag = 1;
+		var script = document.createElement('script');
+
+		//这里callback
+		script.src = 'http://www.myweb.com?callback=emm';
+		var head = document.getElementsByTagName('head')[0];
+		head.appendChild(script);
+	</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+后台被请求的php接口
+	<?php
+		$arr = array("username"=>"zs","password"=>"123456");
+		$abc = $_GET['callback'];
+		echo $abc.'('.json_encode($arr).')';
+
+		//json_encode是转码的函数
+	?>

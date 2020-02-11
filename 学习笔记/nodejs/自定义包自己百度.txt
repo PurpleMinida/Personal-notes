@@ -1,0 +1,2 @@
+在html文件中的自定义占位符  $$chinse$$
+node中的replace('$$chinse$$','需要填充的内容')

@@ -1,0 +1,2 @@
+路由匹配参数在path的路径后面用冒号  path:"./home/:top250/:id"
+会存在$route.params中

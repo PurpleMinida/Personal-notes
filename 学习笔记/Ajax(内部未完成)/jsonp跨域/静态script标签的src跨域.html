@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script /*async*/ src="http://www.myweb.com/xxx.php"></script>
+script标签的async属性表是异步加载 默认是同步加载  (当在script中加了async之后就跨不了域了)
+<!-- 只有当上面请求返回的内容是纯js代码是才能通过下面的js获取到 -->
+<script>
+	byid
+</script>
+
+
+缺点：1 跨域需要在之前引入 不然下面获取不到
+		2 当url中有参数要传递时 只能写死
+</html>

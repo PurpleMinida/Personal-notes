@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<!-- vue提供的component -->
+		<!-- component是一个占位符  :is 属性是用来展示组件的名称 -->
+		<!-- : 是绑定 里面如果需要放字符串 要用单引号 -->
+		<!-- <component :is="'login'"></component> -->
+
+
+		<a href="#" @click.prevent="comName='login'">login</a>
+		<a href="#" @click.prevent="comName='register'">register</a>
+		<component :is="comName"></component>
+	</div>
+
+
+
+	<script src="./vue.js"></script>
+	<script>
+
+		Vue.component('login',{
+			template:'<h1>login</h1>'
+		});
+		Vue.component('register',{
+			template:'<h1>register</h1>'
+		});
+
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				comName:'login'
+			}
+		});
+	</script>
+</body>
+</html>

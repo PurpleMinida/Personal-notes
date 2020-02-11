@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script>
+	//链式编程  调用了方法后一定要返回当前对象才能一直点下去
+
+
+	@@@断链 --->  前一个方法返回的不是当前对象
+	@@@断链连接方法  end()  在哪里出现断链就在哪里后面.end()方法
+
+
+	//当前对象$("#id")  当调用了html()方法后返回的还是当前对象
+	$("#id").html().css()   ---->   调用成功
+
+	$("#id").html().css("backgroundColor","red")  -->  报错 html()方法获取到的是id的内容值返回一个字符串  不是当前对象
+
+
+	//链式编程小练习
+	$("#id").mouseover(function () {
+		$(this).css("backgroundColor","green").html("你好");
+	}).cilck(function () {
+		$(this).css("fontFamily","微软雅黑").css("fontSize","50px");
+	});
+
+	$("#id").click(function () {}).mouseover(function () {}).mouseout(function () {});
+</script>
+</html>

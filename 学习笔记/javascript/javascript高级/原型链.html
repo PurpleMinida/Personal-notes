@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//构造函数
+	function Student(name,age) {
+		this.name = name;
+		this.age = age;
+	}
+
+	//构造函数的原型对象的原型对象  ===  Object构造函数的原型对象
+	//s1.__proto__.__proto__ === Object.prototype     ------>   true
+	//每个对象都有toString()方法  因为在原型对象的原型对象上有很多属性和方法
+
+
+	console.log(s1.属性/方法);
+	//当s1对象没有该属性/方法 就去原型上找如果原型上没有就去 原型的原型上找
+
+
+	//在原型上添加方法
+		//1.直接添加 不会删掉constructor
+		Student.prototype.sayHi = function () {
+			console.log('hihi');
+		}
+		Student.prototype.eat = function () {
+			console.log('eat');
+		}
+		//2.重写该对象 会删掉constructor  Array和String对象无法这样设置(本身就有很多方法,不允许修改)
+		Student.prototype = {
+			//因为constructor被覆盖  就需要重新设置 让他重新指会构造函数
+			constructor:Student,
+
+			sayHello:function () {
+				console.log('hello');
+			},
+			eatFood:function () {
+				console.log('food');
+			}
+		}
+
+		var s1 = new Student('cs',16);
+		console.dir(s1);
+
+
+
+		//如果需要改原型对象 new要要在修改之后 才能访问到修改后的原型对象
+</script>
+</html>

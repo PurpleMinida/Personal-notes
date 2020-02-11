@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	鼠标移动函数  onmousemove()
+</body>
+<script type="text/javascript">
+	 btn.onclick = function(event){
+	 	//eventPhase  值等于 1 捕获阶段     2 目标阶段     3 冒泡阶段
+	 	console.log(event.eventPhase)
+
+	 	//event.target  获取真正触发事件的对象
+
+	 	//event.currentTarget  事件处理函数所属的对象
+
+	 	//event.type   获取事件名称
+
+	 	//event.clientX 和 event.clientY 获取浏览器可视区域坐标 无论有没有滚动条(不会因为滚动条的滚动改变)
+
+	 	//event.pageX 和 event.pageY 这时就包括滚动条滚过的位置
+	 }
+</script>
+</html>

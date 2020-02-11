@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+	#red{
+		width: 300px;
+		height: 300px;
+		background: red;
+	}
+</style>
+</head>
+<body>
+    <div id="red">
+    <button id="btn">全屏</button>
+    <button id="escbtn">退全屏</button>
+    <button id="isbtn">判断全屏</button>
+	</div>
+
+	<input type="file" id="myFile">
+	<img src="" id="srcc">
+</body>
+
+<script>
+	window.onload=function(){
+		var div = document.querySelector("#red");
+		var btn = document.querySelector("#btn");
+		var escbtn = document.querySelector("#escbtn");
+		var isbtn = document.querySelector("#isbtn");
+		btn.onclick = function(){
+			//需要前缀
+			//全屏requestFullScreen()
+			//退出全屏document.CancelFullScreen()
+			//判断全屏(属性)document.fullScreenElement;
+			div.webkitRequestFullScreen();
+		}
+		escbtn.onclick = function(){
+			document.webkitCancelFullScreen();
+		}
+		isbtn.onclick = function(){
+			if(document.webkitFullscreenElement){
+				alert("true");
+			}else{
+				alert("false");
+			}
+		}
+
+		/*
+			读文件方法  FileReader
+						readAsText()
+						readAsBinaryString()
+						readAsDataURL()
+			文件读取过程中的方法
+						onabort:中断触发
+						onerror:读取错误触发
+						onload:读取成功触发
+						onloadend:不管成功失败读完都触发
+						onloadstart:开始读触发
+						onprogress:读的过程触发
+		*/
+
+		//获取input
+		var myFile = document.querySelector("#myFile");
+		//获取img
+		var srcc = document.querySelector("#srcc");
+			//当input发生改变(文件内容改变)
+			myFile.onchange = function(){
+				//创建读文件对象
+				var read = new FileReader();
+				//把文件付给变量
+				var filee = myFile.files;
+				//调用读文件方法
+				read.readAsDataURL(filee[0]);
+				//当文件读取完成触发
+				read.onload = function(){
+					//打印读完文件的编码内容
+					console.log(read.result);
+					//把内容付给img
+					srcc.src = read.result;
+				}
+			}
+
+
+	}
+</script>
+</html>

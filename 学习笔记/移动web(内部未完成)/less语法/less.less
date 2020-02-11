@@ -1,0 +1,79 @@
+/*注释  在css文件中能显示*/
+//这样的注释在css文件中不显示(不编译)
+
+
+
+/*变量  @变量名:值;*/
+@baseColor:red;
+a{
+	color:@baseColor;
+}
+
+
+
+/*混入:可以将一个定义好的样式引入到另一个样式中 类似函数的调用*/
+.addRadius{
+	border-radius: 10px;
+}
+div{
+	width: 200px;
+	height: 200px;
+	/*引入已经写好的样式*/
+	.addRadius;
+}
+
+.addRadius(@r){
+	border-radius: @r;
+}
+div{
+	width: 200px;
+	height: 200px;
+	/*引入已经写好的样式*/
+	/*传入参数*/
+	.addRadius(5px);
+}
+
+/*给个默认值*/
+.addRadius(@r:10px){
+	border-radius: @r;
+}
+div{
+	width: 200px;
+	height: 200px;
+	/*引入已经写好的样式*/
+	/*传入参数*/
+	.addRadius(@r);
+}
+
+
+
+
+/*嵌套 实现选择器的继承，可以减少代码量，同时使用结构清晰*/
+/*之前的嵌套
+.nav{}
+.nav > div{}
+.nav > div > h3{}
+.nav > div > a{}
+.nav > div > a:hover{}
+.nav > div::before{}    */
+
+.nav{
+	width:200px;
+	/*nav下面的所有div*/
+	div {
+		&::before{
+			content: "";
+		}
+	}
+	/*下面的子div*/
+	> div{
+		/*nav下面的div下面的a*/
+		> a{
+			/*nav下面的div下面的a的hover*/
+			&:hover{
+
+			}
+		}
+	}
+
+}

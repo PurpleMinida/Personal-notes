@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+
+@@@@当第二个参数没有时就是自身绑定事件   自身.on("click",function () {})  自身.bind("click",function () {})  自身.delegate("click",function () {})
+
+
+	//bind()
+	$("#id").bind("mouseover click",function () {
+		//两个事件触发同一个函数
+	});
+
+	//父元素.delegate()
+		//参数
+			//1 元素/id/class等等
+			//2 事件名
+			//3 function
+
+	$("<p>ppp</p>").appendTo($("#parentId"));
+	$("#parentId").delegate("p","click",function () {
+		console.log('nihao');
+	});//使parentId下面的p有点击事件    (可以动态添加)
+
+	$("<p id='bu'>ppp</p>").appendTo($("#dv"));
+		$("#dv").delegate("#bu","click",function () {
+			console.log('11');
+	})
+
+
+
+
+	//父元素.on()     -----    推荐
+		//参数
+			//1  事件名
+			//2  元素/id/class等等
+			//3  funcition
+
+	$("<p id='bu'>ppp</p>").appendTo($("#dv"));
+		$("#dv").on("click","#bu",function () {
+			console.log('11');
+	})
+</script>
+</html>

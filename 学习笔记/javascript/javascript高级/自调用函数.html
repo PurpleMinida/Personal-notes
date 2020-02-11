@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//自调用函数  为了避免命名冲突  这时开了一个局部作用域(函数外不能访问)
+	//(函数)()
+	(function () {
+		//构造函数
+		function Stu() {
+			this.atc = function () {
+				console.log('atc');
+			}
+		}
+		//为了外部能访问构造函数  给顶级对象(window)添加该属性
+		window.Stu = Stu;
+
+		//普通函数
+		function run() {
+			console.log('run');
+		}
+		//为了外部能访问普通函数  给顶级对象(window)添加该属性
+		window.run = run;
+
+	})();
+	//访问普通函数
+	run();
+	//创建实例对象访问
+	var stu = new Stu();
+	stu.atc();
+
+
+
+
+
+
+
+
+
+
+	//this关键字可以赋值给一个变量保存 便于在其他地方使用
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+需要放到服务器上，本地的话也要放到localhost中
+<script>
+	//Notification.permission属性 判断当前通知的授权状态
+	if(Notification.permission === 'granted'){
+		console.log('用户允许')
+		noti()
+	}else if(Notification.permission === 'denied'){
+		console.log('用户拒接')
+	}else{
+		//用户还没选择，去申请
+		//通过Notification的requestPermission()方法请求权限
+		Notification.requestPermission().then(function(permission){
+			if(permission === 'granted'){
+				console.log('用户点了允许')
+				noti()
+			}else if(permission === 'denied'){
+				console.log('用户点了拒接')
+			}
+		})
+	}
+	function noti(){
+		var n = new Notification('福林你好',{
+			body:'来自福林的通知',
+			tag:'fulin',
+			icon:'./suppergirl.jpg',
+			requireInteraction:true
+		})
+		setTimeout(function(){
+			n.close();
+		},8000)
+	}
+</script>
+</body>
+</html>

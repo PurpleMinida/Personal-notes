@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	
+	var s = 'aaa';
+	s = 'xxxxyyyyy';
+	//当从新给字符串赋值时  浏览器会从新开辟一个内存空间xxxxyyyyy把s指向xxxxyyyyy  旧的aaa依然在内存中只是不能访问了只能等浏览器自动销毁
+	//所以当大量拼接字符串会很慢
+</script>
+</html>

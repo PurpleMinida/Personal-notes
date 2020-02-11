@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app"></div>
+
+
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<script type="text/babel">
+	class Bindthis extends React.Component{
+		constructor(props){
+			super(props);
+			this.state = {
+				msg:"啦啦"
+			}
+		}
+		render(){
+			return <div>
+				<h1>{this.state.msg}</h1>
+				{/*readOnly属性让文本框只读*/}
+				<input type="text" value={this.state.msg} readOnly/>
+				<hr/>
+				{/*onChange*/}
+				<input type="text" value={this.state.msg} onChange={this.txtChanged}/>
+			</div>
+		}
+		txtChanged = (e) => {
+			//这里可以把this.state的数据改变掉 通过setState
+			//但是怎么拿到文本框的值呢
+				//1 通过id拿  document.getElementById()
+				//2 通过ref拿 this.refs.xxx.value
+				//3 通过 事件对象e拿 e.target.value
+			this.setState({
+				msg:e.target.value
+			})
+		}
+	}
+
+
+	ReactDOM.render(<Bindthis></Bindthis>,document.getElementById('app'))
+</script>
+</body>
+</html>

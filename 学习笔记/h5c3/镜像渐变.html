@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+	.item{
+		width: 300px;
+		height: 300px;
+		margin: 0 auto;
+		/*radial-gradient(形状 大小 坐标 颜色);
+			形状:circle  正圆渐变  ellipse  适应容器的渐变;
+			大小:closest-side 最近边
+				farthest-side 最远边
+				closest-corner 最近角
+				farthest-corner 最远角(默认);
+			at 坐标(镜像渐变的中心):(left right center top bottom);
+			颜色:渐变颜色
+		*/
+		background: radial-gradient(at left bottom,yellow,orange);
+	}
+	.items{
+		width: 300px;
+		height: 200px;
+		background:radial-gradient(at 60px 40px,pink,yellow);
+	}
+</style>
+</head>
+<body>
+	<div class="item"></div>
+	<div class="items"></div>
+</body>
+</html>

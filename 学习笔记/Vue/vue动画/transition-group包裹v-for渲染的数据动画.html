@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		li{
+			width: 300px;
+			height: 50px;
+			line-height: 50px;
+			border: 1px dashed #999;
+		}
+		li:hover{
+			background: hotpink;
+			transition: all 1s ease;
+		}
+
+
+
+
+		.v-enter,.v-leave-to{
+			opacity: 0;
+			transform: translateY(80px);
+		}
+		.v-enter-active,.v-leave-active{
+			transition: all 1s ease;
+		}
+
+
+		/*固定写法  可以使列表后面的元素渐渐地向上移动*/
+		.v-move{ /*动画移动的类*/
+			transition: all 1s ease;
+		}
+		.v-leave-active{
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		id:
+		<input type="text" v-model="id" >
+		name:
+		<input type="text" v-model="name">
+		<button v-on:click="add">添加</button>
+		<ul>
+			<!-- v-for 渲染的数据如果要动画效果 要用<transition-group></transition-group>包裹 -->
+			<!-- appear属性可以页面加载完成有动画效果 -->
+			<!-- 页面默认会把transition-group标签渲染成span   
+			      tag属性可以更改成别的标签 -->
+			<transition-group appear tag="ol">
+				<!-- 还要给key属性 -->
+				<li v-for="(item,i) in list" :key="item.id" @click="del(i)">
+					{{item.id}}---{{item.name}}
+				</li>
+			</transition-group>
+		</ul>
+	</div>
+
+<script src="./vue.js"></script>
+<script>
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			id:'',
+			name:'',
+			list:[
+				{id:1,name:'ds'},
+				{id:2,name:'gk'}
+			]
+		},
+		methods:{
+			add(){
+				this.list.push({id:this.id,name:this.name});
+				this.id=this.name='';
+			},
+			del(i){
+				this.list.splice(i,1);
+			}
+		}
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script>
+	//开始触摸触发函数  touchstart
+	addEventLitener("touchstart",function () {});
+	//滑动触发函数  touchmove
+	addEventLitener("touchmove",function () {});
+	//结束触摸触发函数  touchend
+	addEventLitener("touchend",function () {});
+	//触摸意外中断函数  touchcancel
+	addEventLitener("touchcancel",function () {});
+
+
+
+	//touchEvent事件对象
+	touches  在屏幕上手指的列表(对象)
+	targetTouches 在元素上手指的列表(对象)
+	changedTouches  开始(touchstart)触摸与离开(touchend)触摸时的触点
+
+	screenX/screenY  相对屏幕的位置(无论浏览器窗口怎么缩放都是相对屏幕左上角的位置)
+	clientX/clientY  当前浏览器窗口(不包括滚条)
+	pageX/pageY  包括滚动条
+</script>
+</html>

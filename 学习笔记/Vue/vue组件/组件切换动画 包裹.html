@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.v-enter,.v-leave-to{
+			opacity: 0;
+			transform: translateX(150px);
+		}
+		.v-enter-active,.v-leave-active{
+			transition:all 0.5s ease;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<a href="#" @click.prevent="comName='login'">login</a>
+		<a href="#" @click.prevent="comName='register'">register</a>
+		<!-- mode 属性 组件切换的模式 先出再进out-in  先进再出in-out -->
+		<transition mode="out-in">
+			<component :is="comName"></component>
+		</transition>
+	</div>
+
+
+
+	<script src="./vue.js"></script>
+	<script>
+
+		Vue.component('login',{
+			template:'<h1>login</h1>'
+		});
+		Vue.component('register',{
+			template:'<h1>register</h1>'
+		});
+
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				comName:'login'
+			}
+		});
+	</script>
+</body>
+</html>

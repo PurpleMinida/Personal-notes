@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//闭包  内层函数访问了外层函数的变量
+	function fun() {
+		var n = 2;
+		return function () {
+			console.log(n);
+		}
+	}
+
+</script>
+</html>

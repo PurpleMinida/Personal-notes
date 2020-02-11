@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#info1,#info2{
+			width: 200px;
+			height: 50px;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<div id="info1"></div>
+	<button id="btn1">1</button>
+
+	<div id="info2"></div>
+	<button id="btn2">2</button>
+
+</body>
+<script src="./ajax.js"></script>
+<script>
+	window.onload = function(){
+
+		var btn1 = document.getElementById('btn1');
+		var btn2 = document.getElementById('btn2');
+
+		btn1.onclick = function () {
+			ajax('./btn1ajax.php','get','username=zs&password=18','text',function (data) {
+				var div1 = document.getElementById('info1');
+				div1.innerHTML = data;
+			});
+		}
+
+		btn2.onclick = function () {
+			ajax('./btn2ajax.php','post','name=ls&pword=184','json',function (data) {
+				var div2 = document.getElementById('info2');
+				div2.innerHTML = data.username + '---' + data.password;
+			});
+			
+		}
+
+	}
+</script>
+</html>

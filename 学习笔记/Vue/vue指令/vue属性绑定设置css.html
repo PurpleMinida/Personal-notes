@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.red{
+			color: red;
+		}
+		.size{
+			font-size: 20px;
+		}
+		.backgroundPink{
+			background: pink;
+		}
+		.pink{
+			color: pink;
+		}
+		.borderGreen{
+			border: 3px solid green;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<h1 class="red backgroundPink">你好</h1>
+		<!-- 通过vue -->
+		<!-- v-bind 会把里面的看成变量 为了不是变量 加了个单引号变成字符串 -->
+		<!-- 1 数组 -->
+		<h1 :class="['size','pink']">嗯嗯</h1>
+		<!-- 2 数组允许三元表达式 -->
+		<h1 :class="['size','pink',flag ? 'borderGreen' : '']">嗯嗯</h1>
+		<!-- 3 数组允许对象 -->
+		<h1 :class="['size','pink',{'borderGreen':flag}]">嗯嗯</h1>
+		<!-- 4 直接传对象 对象的属性可带引号也可不带引号 -->
+		<h1 :class="{red:true, borderGreen:true, size:false, backgroundPink:true}">嗯嗯</h1>
+		<h1 :class="classObj">嗯嗯</h1>
+	</div>
+
+	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				flag:true,
+				classObj:{red:true, borderGreen:true, size:false, backgroundPink:true}
+			}
+		});
+	</script>
+</body>
+</html>

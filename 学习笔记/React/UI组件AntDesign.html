@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	是阿里的
+		https://ant.design/docs/react/introduce-cn
+	安装
+		npm install antd -S
+		yarn add antd
+	按需导入 再以标签形式使用 还需要导入样式import 'antd/dist/antd.css'; // or 'antd/dist/antd.less' 
+
+	一般引入第三方的css文件都是以.css结尾的，但是我们webpack有启用了css文件模块化，所以弄得css样式效果不是我们想要的，所以我们一般手写.less或.scss文件再把less和scss文件启用模块化就不会影响第三方的css文件样式了
+		import {在官网中查 想用哪个组件就到如哪个组件} from antd
+		比如 导入一个日历组件 import {DatePicker} from 'antd'
+		<DatePicker></DatePicker>
+
+
+
+
+
+
+
+	按需加载 
+		由于加载全部antd太大，所以只导入需要的组件，就需要安装babel-plugin-import
+		这时就不用导入 js 和 css 了babel-plugin-import会自动帮你导入
+	安装 npm i babel-plugin-import -D
+
+		.babelrc or babel-loader 
+		{
+		  "plugins": [
+		    ["import", {
+		      "libraryName": "antd",
+		      "libraryDirectory": "es",
+		      "style": "css" // `style: true` 会加载 less 文件
+		    }]
+		  ]
+		}
+		然后只需从 antd 引入模块即可，无需单独引入样式。等同于下面手动引入的方式。
+
+		// babel-plugin-import 会帮助你加载 JS 和 CSS
+		import { DatePicker } from 'antd';
+</body>
+</html>

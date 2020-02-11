@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+
+		/*只会对你设置过编码的文字才会使用成功*/
+
+
+		/*定义字体*/
+		@font-face{
+			font-family: '自定义字体名字';
+			src:url('路径');/*ie9*/
+			src:url('路径')format('embedded-opentype'),/*ie678*/
+			url('路径')format('woff'),/*chrome  firefox*/
+			url('路径')format('truetype'),/*chrome  firefox  opera  safari android  ios4.2+*/
+			url('路径')format('svg');
+		}
+		/*使用字体*/
+		div{
+			font-family: 自定义字体名字;
+		}
+
+
+
+		/*字体图标*/
+
+		/*定义字体*/
+		@font-face{
+			font-family: '自定义字体名字';
+			src:url('路径');/*ie9*/
+			src:url('路径')format('embedded-opentype'),/*ie678*/
+			url('路径')format('woff'),/*chrome  firefox*/
+			url('路径')format('truetype'),/*chrome  firefox  opera  safari android  ios4.2+*/
+			url('路径')format('svg');
+		}
+		/*使用字体  把图标的编号写在html文档中*/
+		div{
+			font-family: 自定义字体名字;
+			color: red;
+			font-size: 2px;
+		}
+		.small::before{
+			content: "\e640";
+		}
+	</style>
+</head>
+<body>
+	<div class="small">&#xe640</div>
+</body>
+</html>

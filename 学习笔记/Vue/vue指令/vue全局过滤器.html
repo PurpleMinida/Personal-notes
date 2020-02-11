@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<!-- 全局过滤器在哪个vue管理的容器中都可以使用 -->
+		<!-- 全局过滤器只能在 v-bind 和 {{}} 中使用 -->
+
+		<!-- 没参数时 -->
+		<p>{{msg | magFor}}</p>
+		<!-- 要传参时 -->
+		<p>{{msg | magFormat('啦啦')}}</p>
+
+		<!-- 调用多个过滤器 就是先把只给第一个过滤器处理 再到第二个 直到最后处理完就把数据放进去-->
+		<p>{{msg | magFormat('啦啦') | msgFor}}</p>
+
+	</div>
+
+	<script src="./Vue2.6.10.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg:'001050020100010000'
+			}
+		});
+		// 不用传参
+		Vue.filter('msgFor',function(){
+			return msg.replace(/1/g,arg);
+		});
+		// 要传参
+		Vue.filter('msgFormat',function(msg,arg){
+			return msg.replace(/1/g,arg);
+		});
+
+		// 定义过滤器  function (data) {} 是以怎么过滤 (过滤器的第一个参数已经规定了就是过滤器前面的数据 即是 | 前面的)
+		//Vue.filter('过滤器名称',function (data) {});
+
+		//过滤器使用格式
+		// {{ name | 过滤器名称}}
+	</script>
+</body>
+</html>

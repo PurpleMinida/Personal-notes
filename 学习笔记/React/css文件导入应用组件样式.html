@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	jsx组件中导入多个css文件时 相同的css类名会混杂在一块  
+	比如导入两个css文件但是两个文件中都有一个相同的类名 就会把样式混在一起
+
+
+	这时就要启用css模块化（import cssstyles from './xxx.css'）
+	(如果没有启用模块化cssstyles就是一个空对象，启用了就会返回一个样式对象)
+		1 webpack.config.js文件中的css-loader传参
+			module:{
+				rules:[
+					{test:/\.css$/,use:['style-loader','css-loader?modules']}
+				]
+			}
+		2 import cssstyles from './xxx.css'
+	使用时通过对象属性
+		组件中的标签： <h1 class="cssstyles.在xxx.css文件中的类名"></h1>
+
+
+
+	模块化之后的css文件都是私有的样式(而且会重命名成一串乱码(hash值)类名代替)
+		可以通过 :global() 暴露成全局的css样式
+		:global(.box){
+			color:pink;
+		}
+	这时.box的类名就是全局的样式了
+
+	如果想要全局有私有也有可以定义一个全局的一个私有的
+		全局
+			:global(.box){
+				color:pink;
+			}
+		私有
+			.box{
+				color:green;
+			}
+
+
+
+
+	由于会重命名成一串乱码(hash值)类名代替 不易看出是哪个类名所以
+		1 webpack.config.js文件中的css-loader传参
+			module:{
+				rules:[
+					{test:/\.css$/,use:['style-loader','css-loader?modules&localIdentName=[name]_[local]-[hash:5]']}
+				]
+			}
+
+		localIdentName=[name]_[local]-[hash:5]
+			name:导入css文件的名称
+			local:导入css文件内部的样式类名
+			hash:hash值
+</body>
+</html>

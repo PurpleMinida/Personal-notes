@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app"></div>
+
+	<script src="./Vue2.6.10.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+
+			},
+			// 私有过滤器 （过滤调用时就近原则 私有与全局重名时调用私有）
+			filters:{ // 过滤器名称 处理函数
+				DateFormat:function(data){ //第一个参数永远是过滤器前传递过来的数据
+
+				}
+			}
+		});
+	</script>
+</body>
+</html>

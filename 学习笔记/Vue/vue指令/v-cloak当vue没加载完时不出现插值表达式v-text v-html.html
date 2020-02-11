@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		[v-cloak]{  /*通过属性选择器使它隐藏 当vue加载完成 就会把p中的v-cloak属性移除*/
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<p v-cloak>++++++{{msg}}---------</p>
+		<h4 v-text="msg">===</h4>
+		<!-- v-text没有闪烁问题 -->
+		<!-- v-text会把元素(标签)内的所有内用覆盖 不如上面h4中有=会覆盖掉
+				但是{{}}不会吧所有内容覆盖 只会替换自己内部的内容
+		 -->
+
+		 <div>{{msg2}}</div>
+		 <div v-text="msg2"></div>
+		 <!-- 上面的{{}}和v-text都不会解析html代码 会转义输出 -->
+
+		 <div v-html="msg2">====</div>
+		 <!-- v-html也会把元素(标签)内的所有内用覆盖 -->
+	</div>
+
+	<script src="vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg:'nihao',
+				msg2:'<h1>我是h1</h1>'
+			}
+		});
+	</script>
+</body>
+</html>

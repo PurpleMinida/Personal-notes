@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.ball{
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<input type="button" value="加入" @click="show=!show">
+		<!-- 动画生命周期函数 -->
+		<!--    <transition
+					  v-on:before-enter="beforeEnter"         进入之前
+					  v-on:enter="enter"                      开始进入
+					  v-on:after-enter="afterEnter"			  进入之后
+					  v-on:enter-cancelled="enterCancelled"   进入取消
+
+					  v-on:before-leave="beforeLeave"         离开之前
+					  v-on:leave="leave"                      开始离开
+					  v-on:after-leave="afterLeave"           离开之后
+					  v-on:leave-cancelled="leaveCancelled"   离开取消
+				>   后面是事件函数要在methods中定义
+				 -->
+		<transition 
+			@before-enter="beforeEnter"
+			@enter="enter"
+			@after-enter="afterEnter"
+		>
+			<div class="ball" v-show="show"></div>
+		</transition>
+	</div>
+
+<script src="vue.js"></script>
+<script>
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			show:false
+		},
+		methods:{
+			// 第一个参数 el 执行动画的元素 el是原生js对象可以使用原生的属性方法
+			// document.getElementById('el');
+			beforeEnter(el){
+				//动画还没开始  可以定义初始样式  就是开始位置
+				el.style.transform = "translate(0,0)";
+			},
+			enter(el,done){ // done 就是afterEnter函数 done在enter和leave函数必须参数
+				//这里设置结束状态 和 动画过程
+
+				//offsetWidth offsetHeight offsetLeft offsetTop会强制动画刷新 不然没效果
+				el.offsetWidth;
+
+				//结束位置
+				el.style.transform = "translate(150px,300px)";
+				//动画过程
+				el.style.transition = "all 1s ease";
+
+				//立马调用afterEnter函数
+				done();
+			},
+			afterEnter(el){
+				//动画完成之后 调用
+				this.show = false;
+			}
+		}
+	});
+</script>
+</body>
+</html>

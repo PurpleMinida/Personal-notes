@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	
+	var s1 = 'qwe3';
+	console.log(s1.length);//变量怎么能使用对象的属性呢  因为他会创建一个s1对象  使用后再销毁该对象
+	//以上代码过程
+	var s1 = new String('qwe3');
+	s1.length
+	s1 = null;
+
+	//这就是监本包装类型  三种
+	//String  Number  Boolean 
+	var s1 = new Number('16');
+	s1.length
+	s1 = null;
+
+	var s1 = new Boolean(false);
+	s1.length
+	s1 = null;
+</script>
+</html>

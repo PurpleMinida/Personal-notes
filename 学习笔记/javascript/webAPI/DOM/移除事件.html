@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//移除事件
+	1.btn.onclick = null;
+
+	2.removeEventListener('事件',函数名)
+	@@@不能是匿名函数
+	function remov () {
+		alert('你好');
+		btn.removeEventListener('cilck',);
+	}
+	btn.addEventListener('click',remov);
+
+
+	3.ie个垃圾
+	function btnClick() {
+		alert('你好');
+		btn.detachEvent('cilck',btnClick)
+	}
+	btn.attachEvent('onclick',btnClick);
+</script>
+</html>

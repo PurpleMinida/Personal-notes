@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+	#div1{
+		width: 200px;
+		height: 200px;
+		border: 1px solid red;
+		float: left;
+	}
+	#div2{
+		width: 200px;
+		height: 200px;
+		border: 1px solid blue;
+		float: left;
+		margin-left: 20px;
+	}
+	#div3{
+		width: 200px;
+		height: 200px;
+		border: 1px solid green;
+		float: left;
+		margin-left: 20px;
+	}
+	#pe1,#pe2{
+		background: pink;
+	}
+</style>
+</head>
+<body>
+    <div id="div1">
+    	<p id="pe1" draggable="true">拖拽我一号</p>
+    	<p id="pe2" draggable="true">拖拽我二号</p>
+    </div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+</body>
+
+<script>
+	var obj=null;
+	document.ondragstart = function(q){
+		q.target.style.opacity=0.5;
+		obj = q.target;
+	}
+	document.ondragend = function(q){
+		q.target.style.opacity=1;
+	}
+	document.ondragover = function(q){
+		q.preventDefault();
+	}
+	document.ondrop = function(q){
+		q.target.appendChild(obj);
+	}
+</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<!-- item 是数组的每一项 -->
+		<p v-for="item in list">{{item}}</p>
+		<!-- i 索引值 -->
+		<p v-for="(item,i) in list">{{i}}-----{{item}}</p>
+		<!-- 循环数组对象 -->
+		<p v-for="item in lists">{{item}}</p>
+		<!-- 循环数组对象的属性 -->
+		<p v-for="(user,i) in lists">{{user.id}}-----{{user.name}}</p>
+
+		<!-- 循环对象 value是值  key是键  i是索引-->
+		<p v-for="(value,key,i) in obj">{{key}}---{{value}}-----{{i}}</p>
+
+		<!-- 迭代数字 从一开始-->
+		<p v-for="count in 10">{{count}}</p>
+
+
+		<input type="text" v-model="id">
+		<input type="text" v-model='name'>
+		<button @click="add">ADD</button>
+
+		<!-- v-for循环是注意  key只能使用number和string -->
+		<!-- key 要用v-bind绑定 -->
+		<!-- key='fulin' key='1' 试了可以 -->
+		<!-- 当时用v-for有问题是要考虑key值 -->
+		<p v-for="item in lists" :key='dbsh'>
+			<input type="checkbox">{{item.id}} --- {{item.name}}
+		</p>
+	</div>
+
+	<script src="./Vue2.6.10.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				id:'',
+				name:'',
+				list:[1,2,3,4,5,6],
+				lists:[
+					{id:1,name:'hj1'},
+					{id:2,name:'hj2'},
+					{id:3,name:'hj3'},
+				],
+				obj:{
+					name:'lk',
+					age:15,
+					sex:'man'
+				}
+			},
+			methods:{
+				add(){
+					this.lists.unshift({id:this.id,name:this.name});
+				}
+			}
+		});
+	</script>
+</body>
+</html>

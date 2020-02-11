@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//横向滚动出去的距离
+	document.body.scrollLeft
+	//纵向滚动出去的距离
+	document.body.scrollTop
+
+	//有的浏览器
+	document.documentElement.scrollLeft
+	document.documentElement.scrollTop
+
+	//获取容器在页面中的位置
+	offsetLeft  横向距离
+	offsetTop  纵向距离
+
+
+	//如果一个函数返回一个对象  可这样访问对象中的属性和方法
+	function fu() {
+		return {
+			name:'fulin',
+			sex:'nan',
+			lin:function() {
+				console.log('lin');
+			}
+		};
+	}
+
+	console.log(fu().name);
+	console.log(fu().sex);
+	fu().lin();
+</script>
+</html>

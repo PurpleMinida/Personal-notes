@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div id="app">
+		<input type="button" value="toggle" @click="show=!show" >
+		<!-- 自定义类名 因为是别人的库需要 在前面加上 animated 类 -->
+		<!--    .enter-class
+				.enter-active-class
+				.enter-to-class
+				.leave-class
+				.leave-active-class
+				.leave-to-class
+		-->
+		<!--  动画的时间
+		        :duration='时间'
+		      也可以自定义进入的时间和离开的时间
+				:duration="{enter:500,leave:400}" -->
+		<transition enter-active-class="animated tada" leave-active-class=" animated bounceOutRight" :duration="{enter:500,leave:400}">
+			<p v-if="show">hello</p>
+		</transition>
+	</div>
+
+<script src="vue.js"></script>
+<script>
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			show:true
+		}
+	});
+</script>
+</body>
+</html>

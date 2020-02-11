@@ -1,0 +1,17 @@
+CACHE MANIFEST
+#上面必须是第一句,连注释都不能有
+
+#需要缓存的文件清单列表
+CACHE:
+#下面是需要缓存的清单列表
+../image/xxx1.jpg
+../image/xxx2.jpg
+../image/xxx3.jpg
+
+#需要每次都从服务器请求的清单列表
+NETWORK:
+../image/xxx.png
+
+#配置如果无法获取就用指定文件代替  前面是无法加载的文件  (空格)  后面是代替的文件
+FALLBACK:
+../image/bbb.jpg ../image/ppp.jpg

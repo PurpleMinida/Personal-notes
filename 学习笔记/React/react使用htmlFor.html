@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app"></div>
+	<div id="bpp"></div>
+
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<script type="text/babel">
+
+	var span = React.createElement('span',{},'我是span');
+
+	var mydiv = React.createElement('h1',{id:'h1',title:'hello',className:'pink'},'imh1',span);
+	ReactDOM.render(mydiv,document.getElementById('app'));
+
+
+	var divbpp = <div>
+		<h3>nihao</h3>
+		<h5>nihao</h5>
+		<label htmlFor=""></label>
+	</div>;
+	ReactDOM.render(divbpp,document.getElementById('bpp'));
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//每一个构造函数都有一个属性  原型 / 原型对象 prototype
+	function Student(name,age,sex) {
+		this.name = name;
+		this.age = age;
+		this.sex = sex;
+		//如果在构造函数中创建方法 当要new很多次时 会开辟很多个方法的内存(也可以把函数提到全局来，但是需要给函数命名，如果有很多函数就要挨个命名，也可能会出现同名的情况) 而且每个方法的地址也不一样 为了让相同的方法只占同一个内存
+	}
+	//就有了原型 / 原型对象
+	Student.prototype.sayHi = function () {
+		console.log('大家好，我是' + this.name);
+	}
+
+	var s1 = new Student('zs',18,'男');
+
+</script>
+</html>

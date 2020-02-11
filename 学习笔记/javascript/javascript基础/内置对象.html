@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		//Math对象   不是构造函数不用new  里面的成员都是静态的
+		Math.PI  圆周率
+		Math.floor(x)  向下取整 3.9 -> 3 	  3.04 -> 3
+		Math.ceil(x)  向上取整 3.9 -> 4 	  3.04 -> 4
+		Math.round(x) 四舍五入
+		Math.abs(x)  |x|
+		Math.max()  求最大值  一个或一组数
+		Math.min()  求最小值
+
+		
+
+		//Date对象  是构造函数需要new
+
+		//距离1970-01-01到现在的毫秒数valueOf()  getTime()
+		var d = new Date();
+		console.log(d.valueOf());
+
+		//1.空构造函数   获取当前时间
+		var d = new Date();
+		console.log(d);
+
+		//2.传入毫秒数 距离1970-01-01到现在的时间
+		var d = new Date(16616513223);
+		console.log(d);
+
+		//3.传入日期
+		var d = new Date('1998-02-08  8:8:8');
+		console.log(d);
+
+		//4.传入
+		var d = new Date(year,month,[day,时，分，秒]);
+
+		//Date方法
+		var d = new Date();
+		d.toString()  ->  字符串
+		d.toDateString()  ->  年月日
+		d.toTimeString() ->  时分秒
+		d.toLocalDateString()  ->  本地年月日
+		d.toLocalTimeString() ->  本地时分秒
+
+		d.getTime()  毫秒数
+		d.getMilliseconds()  毫秒数
+		d.Seconds()  秒
+		d.getMinutes()  分
+		d.getHours()  时
+		d.getDay()  星期几  0=星期日
+		d.getDate() 号
+		d.Month() 月从零开始
+		d.getFullYear() 年
+
+
+
+		
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		#wrapper{
+			width: 200px;
+			height: 150px;
+			overflow: hidden;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+<div id="wrapper">
+	<ul>
+		<li>你好</li>
+		<li>你好</li>
+		<li>你好</li>
+		<li>你好</li>
+		<li>你好</li>
+		<li>你好</li>
+		<li>你好</li>
+		<li>你好</li>
+		<li>你好</li>
+		<li>你好</li>
+		<li>你好</li>
+		<li>你好</li>
+		<li>你好</li>
+		<li>你好</li>
+		<li>你好</li>
+		<li>你好</li>
+	</ul>
+</div>
+</body>
+<script src="./iscroll-master/build/iscroll.js"></script>
+<script>
+	var myScroll = new IScroll('#wrapper',{
+		mouseWhell:true,//鼠标中键滚动
+		scrollbars:true//有滚动条，但是在屏幕的右边而不是容器(因为滚动条是position所以给容器position就可以在容器内部了)
+	});
+</script>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//递归
+	function loadTree(){
+		for (var i = 0;i < parent.children.length;i++) {
+			var child = parent.children[i];
+			console.log(child);
+			loadTree(child);
+		}
+	}
+</script>
+</html>

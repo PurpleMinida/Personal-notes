@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- <input type="button" value="按钮" :title="mytitle + '456' " v-on:click="alert('lalala')">   不行v-bind会把alert解析成变量-->
+		<input type="button" value="按钮" v-on:click="show">
+		<input type="button" value="按钮" v-on:mouseover="show">
+		<!-- mouseenter 等事件 -->
+
+		<!-- @  简写 -->
+		<input type="button" value="function按钮" @click="show">
+		<input type="button" value="无:按钮" @click="showalign">
+		<input type="button" value="箭头按钮" @click="zaishow">
+		<input type="button" value="vm按钮" @click="vmshow">
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				mytitle:'我是title'
+			},
+			methods:{  //定义方法
+				show:function () {
+					alert('lalalala');
+				},
+				//方法也可以这样定义
+				showalign(){
+					alert('babababa');
+				},
+				zaishow:()=>{
+					alert('cacacaca');
+				},
+				vmshow:function () {
+					//在内部访问本身的，属性，方法，数据 要通过this
+					alert(this.mytitle);
+
+
+					//vm实例会监听data数据改变，发生改变时就会从新渲染
+					this.mytitle = '我擦';
+				}
+			}
+		});
+	</script>
+</body>
+</html>

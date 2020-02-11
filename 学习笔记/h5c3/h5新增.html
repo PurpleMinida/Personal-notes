@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<style type="text/css">
+		.red{
+			color: red;
+		}
+		.bbb{
+			background: pink;
+		}
+		.font{
+			font-size: 20px;
+		}
+	</style>
+	<body>
+		<input type="text" list="name"/>
+		<datalist id="name">
+			<option>覃大大</option>
+			<option>覃小小</option>
+			<option>覃美美</option>
+			<option>覃莉莉</option>
+			<option>老覃</option>
+		</datalist>
+
+		<fieldset>
+			<legend>hello</legend>
+			name:<input />
+		</fieldset>
+		<form action="">
+				<input placeholder="hello"/><br/>
+				<input autofocus value="页面刷新焦点集中"/><br/>
+				
+				<input required value="必填"/><br/>
+			<input autocomplete  name="user"/>
+			<input type="submit"/>
+		</form>
+		
+		<input type="file" multiple/><br/>
+
+	<form action="">
+		<input type="text" id="nme"/>
+		<input type="email" id="ema">
+		<input type="submit"/>
+	</form>
+
+	<progress value="60" max="100"></progress>
+
+	<meter max="100" min="0" high="80" low="30" value="60"></meter>
+
+	<ul>
+		<li class="bbb">one</li>
+		<li class="bbb">two</li>
+		<li class="bbb">three</li>
+		<li class="bbb">four</li>
+		<li class="bbb">five</li>
+	</ul>
+
+
+	<p data-school-name="fulin">15478965</p>
+
+	</body>
+
+	<script>
+		window.onload=function(){
+				//内容发生改变
+			document.getElementById("nme").oninput=function(){
+				console.log(this.value);
+			}
+
+			document.getElementById("ema").oninvalid=function(){
+				console.log("验证不通过触发");
+			}
+
+				//可以是任何选择器 . # p只是第一个
+			var onlyOne = document.querySelector("li");
+			console.log(onlyOne);
+			var everyOne = document.querySelectorAll(".bbb");
+			console.log(everyOne);
+			console.log(everyOne[2]);
+
+
+
+
+			//添加(追加)  className是代替
+			document.querySelectorAll("li")[0].classList.add("red");
+			//去除
+			document.querySelectorAll("li")[1].classList.remove("bbb");
+			//判断有减 无加
+			document.querySelectorAll("li")[2].classList.toggle("font");
+			//判断有没有true/false
+			var booer = document.querySelectorAll("li")[3].classList.contains("bbb");
+				console.log(booer);
+			//返回选择器名 有多个选择器通过item(索引)
+			var nowclass = document.querySelectorAll("li")[4].classList.item(0);
+			console.log(nowclass);
+
+
+			//自定义属性取值 先获取对应的标签 在去属性值
+			var theP = document.querySelector("p");
+			var dataValue = theP.dataset["schoolName"];
+			console.log(dataValue);
+
+			//连通网络接口函数  ononline
+			window.addEventListener("online",function(){
+				alert("网络连通了");
+			});
+			//断开网络接口函数  onoffline
+			window.addEventListener("offline",function(){
+				alert("网络断开了");
+			});
+		}
+
+
+			
+	</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<login></login>
+	</div>
+
+	<template id="templ">
+		<div>
+			<h1>私有login组件</h1>
+		</div>
+	</template>
+
+<script src="./vue.js"></script>
+<script>
+	var vm = new Vue({
+		el:'#app',
+		data:{},
+		methods:{},
+		filters:{},
+		directives:{},
+		components:{ // 实例内部私有组件  组件名称:{ template:'<>内容<>' }
+			login:{
+				// template:'#templ'
+				template:'<h1>私有login组件</h1>'
+			}
+		},
+
+		beforeCreate(){},
+		created(){},
+		beforeMount(){},
+		mounted(){},
+		beforeUpdate(){},
+		updated(){},
+		beforeDestroy(){},
+		destroyed(){}
+	});
+</script>
+</body>
+</html>

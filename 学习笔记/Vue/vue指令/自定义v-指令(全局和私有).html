@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<!-- 自定义全局指令 调用时要v-开头 -->
+		<input type="text" v-focus>
+		<p v-fontweight="900">啦啦啦</p>
+		<p v-font-size="50">啦啦啦</p>
+	</div>
+
+	<script src="./Vue2.6.10.js"></script>
+	<script>
+		// 一般在全局定义的东西都不带s  私有的才带s (全局一定要在new之前定义在new之后会报错) 获取只定义属性的值 binding.value
+
+		// 自定义指令  Vue.directive()
+		// 参数1  指令名称 不需要v-开头
+		// 参数2  是对象
+		Vue.directive('focus',{
+			//钩子函数 自行查文档
+			//在每个函数的第一个参数就是el el是使用了指令的元素 el是原生js对象使用DOM的属性方法
+			bind:function(el){ // 当指令被元素使用时触发函数 只触发一次
+				//el参数就是那个元素用了这个指令el就是当前元素
+				el.focus();//没效果 因为绑定时还没有插入到DOM树中
+			},
+			inserted:function(el){ //元素插入到DOM树中时触发一次
+				el.focus();
+			},
+			updated:function (el) { //查文档
+
+			}
+		});
+
+		// 函数简写 当我们只在 bind 和 update 钩子函数做处理二不考虑其他钩子函数时(相当于在bind和update都写了一份) 简写 
+		Vue.directive('font-size',function (el,binding) {
+			el.style.fontSize = binding.value + 'px';
+		});
+
+		var vm = new Vue({
+			el:'#app',
+			directives:{ // 私有指令
+				'fontweight':{
+					// 样式有关的一般在bind中
+					bind:function (el,binding) {
+						el.style.fontWeight = binding.value;
+					},
+					// 行为有关的以一般在 inserted 中
+					inserted:function(){
+
+					},
+				}
+				//函数简写 把对象换成函数 相当于在bind和update中都有一份
+				'color':function(el){
+					el.style.color = 'pink';
+				}
+			}
+		});
+
+		
+		
+	</script>
+</body>
+</html>

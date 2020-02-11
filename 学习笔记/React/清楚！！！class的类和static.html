@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script>
+	class Person{
+		constructor(name,age){
+			this.name = name;
+			this.age = age;
+		}
+
+		static a = 5;
+		a = 12;
+
+		static say(){
+			console.log('statichello')
+		}
+		say(){
+			console.log('hello')
+		}
+	}
+	var Per = new Person('zs',18);
+	console.dir(Per);
+
+	Per.say();
+	Person.say();
+
+	console.log(Per.a);
+	console.log(Person.a);
+</script>
+</body>
+</html>

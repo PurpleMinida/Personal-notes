@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- v-bind是绑定属性的指令  会把属性值看成表达式 -->
+		<input type="button" value="按钮" v-bind:title="mytitle">
+		<input type="button" value="按钮" v-bind:title="mytitle + '456' ">
+		<!-- 简写为  :  -->
+		<input type="button" value="按钮" :title="mytitle + '456' ">
+	</div>
+
+	<script src="vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				mytitle:'我是title'
+			}
+		});
+	</script>
+</body>
+</html>

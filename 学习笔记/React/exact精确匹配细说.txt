@@ -1,0 +1,4 @@
+exact修然是精确匹配
+但是还是会把所有路由都匹配一遍的
+这时就要导入Switch模块 import {Switch} from 'react-router-dom'
+再有<Switch>标签包裹<Route>标签的路由就会这匹配需要的那个

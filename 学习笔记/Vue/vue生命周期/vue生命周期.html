@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<h3 id="h3">{{msg}}</h3>
+	</div>
+
+	<script src="./Vue2.6.10.js"></script>
+	<script>
+		// 生命周期： 创建 ，运行 ，销毁
+		// 生命周期钩子 = 生命周期函数 = 生命周期事件
+
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg:'ok'
+			},
+			methods:{
+				show(){
+					console.log('执行了show方法');
+				}
+			},
+
+
+
+
+			//  创建阶段
+
+			beforeCreate(){// 第一个生命周期函数 实例被创建完 会执行(这时data和methods都没有初始化)
+				//console.log(this.msg);  undefind
+				//this.show()  报错
+			},
+			created(){ //第二个生命周期函数  这时data和methods被初始化了
+				console.log(this.msg);
+				this.show();
+			},
+			beforeMount(){ // 第三个生命周期函数 模板#app模板已经在内存中编译完成 但是还没有渲染到页面中去  页面元素还没有替换 所以下面输出的是模板字符串
+				console.log(document.getElementById('h3').innerText); //{{msg}}
+			},
+			mounted(){ //第四个生命周期函数 模板已经挂载到页面中 当这个方法执行完之后此时实例已经创建完成  一直在内存中  结束创建阶段进入运行阶段
+					console.log(document.getElementById('h3').innerText); //ok
+			},
+
+
+
+			//运行阶段
+
+			beforeUpdate(){ // 当M层数据被改变时触发 此时data是最新的数据 但是页面的数据还是旧的  当页面刷新是data中的数据一直没有变就不会触发 只是在内存中
+
+			},
+			updated(){ //页面和data数据已经一致
+
+			},
+
+
+
+			//销毁阶段(关闭页面)
+
+			beforeDestroy(){ 
+				// vue实例开始(还没有执行销毁)进入销毁阶段 这时data methods 指令等都处于可用阶段
+			},
+			destroyed(){
+				// 这时所有都销毁了什么都不可用了
+			}
+		});
+
+		
+		
+	</script>
+</body>
+</html>

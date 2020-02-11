@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app"></div>
+
+
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<script type="text/babel">
+	class Bindthis extends React.Component{
+		constructor(props){
+			super(props);
+			this.state = {
+				msg:"啦啦"
+			}
+		}
+		render(){
+			return <div>
+				{/*改变this指向的bind，call，apply后两个是会马上执行函数*/}
+				{/*bind的第一个参数是改变this指向的，之后的参数都会作为前面掉用bind的函数的参数传递进去，也就是说bind第二参数开始都会作为前面函数的参数*/}
+				<input type="button" value="绑定this传参的方式1" onClick={this.changeMsg1.bind(this,'fu','lin')}/>
+				<hr/>
+				<h3>{this.state.msg}</h3>
+			</div>
+		}
+
+		changeMsg1(arg1,arg2){
+			//这里的this指向undefined
+			//上面通过bind修改了this指向，所以下面的this.setState()方法才能用
+			this.setState({
+				msg:'绑定this传参的方式1' + arg1 + arg2
+			})
+		}
+	}
+
+
+	ReactDOM.render(<Bindthis></Bindthis>,document.getElementById('app'))
+</script>
+</body>
+</html>

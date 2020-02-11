@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-image: linear-gradient(to right,yellow,pink);
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+</body>
+<script>
+
+	//touch事件的元素必须要有宽高值
+	var body = document.body;
+	body.addEventListener("touchstart",function (e) {
+		console.log(e);
+	});
+</script>
+</html>

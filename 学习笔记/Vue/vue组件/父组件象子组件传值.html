@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<!-- 1 把要传递的数据通过v-bind绑定 传递属性-->
+		<com1 v-bind:parentmsg="msg"></com1>
+		<!-- # 传递方法 -->
+		<com2 @zishow="show"></com2>
+	</div>
+
+	<template id="tmpl">
+		<div>
+			<h1 @click="fu">子组件</h1>
+		</div>
+	</template>
+
+<script src="./vue.js"></script>
+<script>
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			msg:'我是父组件数据'
+		},
+		methods:{
+			show(){
+				console.log('父组件的show方法');
+			}
+		},
+		components:{
+			com1:{
+				// 3 使用绑定的数据
+				template:'<h1>子组件 --- {{parentmsg}}</h1>',
+				// 2 把要使用的值定义的props数组中
+				props:['parentmsg']
+			},
+			// 传递方法
+			com2:{
+				template:'#tmpl',
+				methods:{
+					fu(){
+						// 传参 this.$emit("zishow",参数一,参数二 ...);
+						this.$emit("zishow");
+					}
+				}
+			}
+		}
+	});
+</script>
+</body>
+</html>

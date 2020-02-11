@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		/* 在哪个组件 哪个组件就会有两个class类 
+			router-link-exact-active
+			router-link-active
+		*/
+		.router-link-active{
+			color: red;
+			font-size:30px;
+		}
+		/* 当需要改变默认的类名时 new里面需要加一个linkActiveClass属性*/
+		.myclass{
+			color: pink;
+			font-size:30px;
+		}
+
+		/* 动画的类*/
+		.v-enter,.v-leave-to{
+			opacity: 0;
+		}
+		.v-enter-active,.v-leave-active{
+			transition: all 1s ease;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- 1 a 链接 切换路由 -->
+		<!-- <a href="#/login">login</a> -->
+		<!-- <a href="#/register">register</a> -->
+
+		<!-- 2 router-link标签 路由切换 默认在页面渲染成a链接 可以通过tag属性改变成别的标签-->
+		<router-link to="/login">login</router-link>
+		<router-link to="/register" tag="span">register</router-link>
+
+		<!-- 4 需要容器 -->
+		<!-- 使用动画 -->
+		<transition mode="out-in">
+			<router-view></router-view>
+		</transition>
+	</div>
+
+<script src="./vue.js"></script>
+<script src="./vue-router.js"></script>
+<script>
+
+	// 1 创建路由实例
+	var routerObj = new VueRouter({
+		routes:[ // 2 保存组件路径 和 模板
+
+			// {path:'/',component:{template:'<h1>default login</h1>'}},  默认显示哪个组件
+
+			// 重定向
+			{path:'/',redirect:'/login'},
+			{path:'/login',component:{template:'<h1>login</h1>'}},
+			{path:'/register',component:{template:'<h1>register</h1>'}}
+		],
+		linkActiveClass:'myclass'
+	});
+
+	var vm = new Vue({
+		el:'#app',
+		// 3 添加到Vue实例中
+		router:routerObj
+	});
+</script>
+</body>
+</html>

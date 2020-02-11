@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+
+
+@@@@get
+	//使用ajax步骤
+		//1.创建XMLHttpRequest对象   ie  var xhr = ActiveXObject("Microsoft");
+			var xhr = new XMLHttpRequest();
+		//2.准备发送
+			//参数1：请求方式(get,post)
+			//参数2：请求地址
+			//参数3：true--异步   false--同步
+
+			//get请求要带参数
+				//xhr.open('get','get.php?username='+uname+'&password='+psd,true);
+
+			xhr.open('get','get.php',true);
+		//3.开始发送
+			//get请求要传入null
+
+			xhr.send(null);
+		//4.指定回调函数
+			xhr.onreadystatechange = function () {
+				if(xhr.readyState == 4){
+					if(xhr.status == 200){
+						alert(xhr.responseText);
+					}
+				}
+			}
+
+-----------------------------------------------------------------------------
+
+@@@@post
+	//使用ajax步骤
+		//1.创建XMLHttpRequest对象   ie  var xhr = ActiveXObject("Microsoft");
+			var xhr = new XMLHttpRequest();
+		//2.准备发送
+			//参数1：请求方式(get,post)
+			//参数2：请求地址
+			//参数3：true--异步   false--同步
+
+			var fulin = 'username='+uname+'&password='+psd;
+
+			xhr.open('post','post.php',true);
+		//3.开始发送
+			//设置请求头
+			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			//参数传递
+			xhr.send(fulin);
+		//4.指定回调函数
+			xhr.onreadystatechange = function () {
+				if(xhr.readyState == 4){
+					if(xhr.status == 200){
+						alert(xhr.responseText);
+					}
+				}
+			}
+
+
+
+
+------------------------------------
+
+@@@@回调函数的readyState值与状态码status与responseText,responseXML
+			var xhr = new XMLHttpRequest();
+		
+			// XMLHttpRequest对象创建成功  ----  readyState = 0
+			console.log(xhr.readyState);
+
+			var fulin = 'username='+uname+'&password='+psd;
+
+			xhr.open('post','post.php',true);
+			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			xhr.send(fulin);
+
+			//已经发送请求  ----  readyState = 1
+			console.log(xhr.readyState);
+
+			//onreadystatechange是当readyState改变时浏览器自己调用的 但是readyState从0到1不调用(就是不包括0-1)
+			xhr.onreadystatechange = function () {
+
+				//readyState = 2  浏览器接收到服务器数据
+				//readyState = 3  浏览器正在解析数据
+				//readyState = 4  浏览器解析完成,可以使用
+				console.log(xhr.readyState);
+
+				if(xhr.readyState == 4){
+					//浏览器解析后的数据是否正常 通过状态码status
+					if(xhr.status == 200){
+
+						//status
+							//200 响应成功
+							//404 没有找到请求资源
+							//500 服务器端错误
+
+						alert(xhr.responseText);
+
+
+
+						//早期的responseXML  (现在很少用) xml数据
+						var dataxml = xhr.responseXML;//变量接收返回的数据(即整个文件)
+						//通过js获取节点来获取内容,再通过节点一层一层的解析 直到获取到内容数据(节点获取的方式有多种)
+						var peopleList = dataxml.getElementsByTagName('peopleList');
+						var peoples = peopleList[0].children;
+						var people1 = peoples[0];
+						var zsName = people1.children[0].innerHTML;
+						var zsAge = people1.children[1].innerHTML;
+						var zsSex = people1.children[2].innerHTML;
+						console.log(zsName,zsAge,zsSex)
+
+
+						//responseText  json数据
+
+						var datasjson = xhr.responseText;
+						//把json转换成js对象的方法  JSON.parse(json数据格式);
+						var jsonToJs = JSON.parse(datajson);
+						console.log(jsonToJs);
+						//转换之后访问里面的值
+						console.log(jsonToJs.name);
+						console.log(jsonToJs.friend.high);
+
+						//把js对象转换成json  JSON.stringify(js对象);
+						var jsObj = {"name":"zs","age":15};
+						var jsToJson = JSON.stringify(jsObj);
+						console.log(jsToJson);
+					}
+				}
+			}
+
+</script>
+</html>

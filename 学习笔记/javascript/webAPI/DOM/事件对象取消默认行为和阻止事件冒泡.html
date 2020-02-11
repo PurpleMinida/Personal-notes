@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	
+	btn.onclick = function (e) {
+		//阻止默认行为  dom标准方法
+		e.preventDefault();
+
+		//老ie
+		e.returnValue = false;
+
+
+
+		//阻止冒泡 Propagation是传播的意思
+		e.stopPropagation();
+
+		//老ie
+		e.canceBubble = true;
+	}
+</script>
+</html>

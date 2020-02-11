@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//构造函数  内部不用new Object()   也不用return对象本身  会自动创建空对象 用this指向该对象  返回对象
+	function Hero(name,weep){
+		//var o = new Object();  不用
+		this.name = name;
+		this.weep = weep;
+
+		this.attack = function () {
+			console.log(this.weep + '攻击')
+		}
+
+		//return o;  不用
+	}
+
+	var hero = new Hero('zs','刀');  //自己写的构造函数可以看到源代码
+	console.log(hero.constructor);
+	//判断对象的具体类型  不过一般用instanceof
+	console.log(hero.constructor === Hero);
+
+	var arr = new Array();
+	console.log(arr.constructor);  //系统的构造函数不能看到源代码
+	//判断对象的具体类型  不过一般用instanceof
+	console.log(arr.constructor === Array);
+
+	hero.attack();
+
+</script>
+</html>

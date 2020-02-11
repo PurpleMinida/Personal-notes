@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script>
+	//原生js时使用
+	if('addEventListener' in document){
+		document.addEventListener('DOMContentLoaded',function() {
+			//参数可以是任意的动漫元素，如果写document.body，说明会将document.body下面的所有元素都绑定fastclick
+			FastClick.attach(document.body);
+		},false);
+	}
+
+
+	//jQuery时使用
+	$(function() {
+		FastClick.attach(document.body);
+	});
+
+
+	//然后直接加事件
+	selector.addEventListener('click',function() {});
+</script>
+</html>

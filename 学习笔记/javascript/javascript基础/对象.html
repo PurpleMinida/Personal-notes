@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+	//创建对象
+		//1.
+		var dog = {
+			name: 'xiaohuang';
+			type: 'labuladuo';
+			eat:function () {
+				console.log(this.name + 'chi')
+			}
+		}
+			console.log(dog.name);
+			console.log(dog[type]);
+			dog.eat();
+
+		//2.
+		var cat = new Object();  //new Object() 调用构造函数 会在内存中创建一个空对象
+		cat.name = 'xiao';
+		cat.eat = function(){
+			console.log('ci')
+		}
+
+		//3.工厂方法(创建多对象)
+		function createHero (name,weapon,equipment,blood) {
+			var hero = new Object();
+			//属性
+			hero.name = name;
+			hero.weapon = weapon;
+			hero.equipment = equipment;
+			hero.blood = blood;
+			//方法
+			hero.attack = function(){
+				console.log(this.name + '攻击');
+			}
+			hero.run = function(){
+				console.log(this.name + '跑');
+			}
+
+			//返回hero对象
+			return hero;
+		}
+
+		var hero1 = createHero('小明','大刀',['衣服','帽子'],100);
+
+
+		//4.自定义构造函数(new Hero();)
+		function Hero (name,weapon,equipment,blood) {
+			//自定义构造函数不需要var hero = new Object();
+			//属性
+			hero.name = name;
+			hero.weapon = weapon;
+			hero.equipment = equipment;
+			hero.blood = blood;
+
+			//方法
+			hero.attack = function(){
+				console.log(this.name + '攻击');
+			}
+			hero.run = function(){
+				console.log(this.name + '跑');
+			}
+
+			//自定义构造函数不需要return hero;
+		}
+
+		var hero1 = new Hero('小明','大刀',['衣服','帽子'],100);
+		var hero2 = new Hero('小红','小刀',['衣服','帽子'],100);
+
+		//new 的执行过程
+			//1.先在内存中创建一个空对象
+			//2.让this指向当前对象
+			//3.执行构造函数
+			//4.自动return当前对象
+	</script>
+</body>
+</html>

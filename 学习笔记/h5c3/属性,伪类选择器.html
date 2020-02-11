@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>c3选择器</title>
+<style type="text/css">
+	/*属性选择器5个*/
+	li[class]{
+		/*选择有class属性的*/
+	}
+	li[class=rr]{
+		/*选择有class=rr属性的*/
+	}
+	li[class*=rr]{
+		/*选择class中含有rr的*/
+	}
+	li[class^=rr]{
+		/*选择class中以rr开头的*/
+	}
+	li[class$=rr]{
+		/*选择class中以rr结尾的*/
+	}
+
+	/*兄弟选择器2个*/
+	.rr + li {
+		/*选择.rr相邻的li元素(向下相邻)*/
+		color: red;
+	}
+	.mm ~ li{
+		/*选择.rr所搜的li元素(向下相邻)*/
+		color: pink;
+	}
+	/*伪类选择器
+		E:first-child;
+		E:last-child;
+		E:first-of-type;
+		E:last-of-type;
+		E:nth-child();
+		E:nth-of-type();
+		E:nth-last-of-type;
+		E:empty;
+
+		E:target;  当被设置成锚点时 使用该样式
+
+
+
+	伪元素
+		E::before{
+			一定要content   默认是行内元素 需要转成块级元素 display float position 转
+			content:"内容";
+			以下写样式
+			color:red;
+		};
+		E::after{
+			一定要content   默认是行内元素 需要转成块级元素 display float position 转
+			content:"内容";
+			以下写样式
+			color:red;
+		};
+		E::first-letter{
+			对第一个字或者字母设置样式
+		};
+		E::first-line{
+			对第一行设置样式
+		};
+		E::selection{
+			当鼠标选择时的样式 但只能设置显示的样式 不能设置内用的样式
+		};
+	*/
+
+
+	/*
+	颜色模式
+	div{
+		opacity会使子元素都透明
+
+		红橙黄绿青蓝紫
+
+		rgb(红,绿,蓝)   rgba();
+		backrground-color:rgb(255,255,0);
+		
+		hsl(度数(0~360)，饱和度(0%~100%),明度(0%~100%))   hsla()
+		明度默认是50%  向上加白色  向下加黑色
+		background-color:hsl(300,100%,50%);
+	}
+	*/
+
+
+	/*
+		文本阴影
+		text-shadow:x轴 y轴 模糊像素 颜色;
+		多个
+		text-shadow:x轴 y轴 模糊像素 颜色,x轴 y轴 模糊像素 颜色;
+
+	*/
+</style>
+</head>
+<body>
+	<ol>
+		<li>111</li>
+		<li>222</li>
+		<li class="rr">333</li>
+		<li>444</li>
+		<li class="mm">555</li>
+		<li>666</li>
+		<li>777</li>
+		<li>888</li>
+		<li>999</li>
+	</ol>
+</body>
+</html>

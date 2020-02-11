@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+offset
+
+	父元素需要脱离文档流(会得到父元素的节点) 如果父元素没有脱离文档流就是body
+	box.offsetParent
+
+	获取容器窗口(body)左边的距离
+	box.offsetLeft
+	获取容器窗口(body)上边的距离
+	box.offsetTop
+	获取容器的大小 宽和高 包括border和padding和内容
+	box.offsetWidth
+	box.offsetHeight
+
+
+
+client
+	获取border-left宽度
+	box.clientLeft
+	获取border-top宽度
+	box.clientTop
+	获取容器大小  包括padding和内容
+	box.clientWidth
+	box.clientHeight
+
+
+scroll
+	滚动出去的横向距离
+	box.scrollLeft
+	滚动出去的纵向距离
+	box.scrollTop
+	获取容器大小  包括padding和未显示的内容 不包括滚动条
+	box.scrollWidth
+	box.scrollHeight
+
+
+当滚动触发的函数
+	onscroll();
+</body>
+</html>

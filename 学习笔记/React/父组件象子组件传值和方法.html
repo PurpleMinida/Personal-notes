@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app"></div>
+
+
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+<script type="text/babel">
+	// 传值和方法 都是通过属性传递 写在{}中
+	// 值和方法都是通过 this.props.属性/方法()  直接使用
+
+
+
+	// 当有多个组件嵌套最外层的组件要传递到最里面层 这时context出现 让所有子孙组件共享
+
+	class Big extends React.Component{
+		constructor(props){
+			super(props)
+
+			this.state = {
+				msg:'lala'
+			}
+		}
+
+		//1 在父组件中定义个getChildContext方法（必须返回一个对象，对象存储共享给子孙的数据）
+		getChildContext(){
+			return {
+				msg:this.state.msg
+			}
+		}
+		//2 使用属性校验规定数据的类型 定义一个静态(static)的childContextTypes
+		static childContextTypes = {
+			msg:PropTypes.string  //规定数据类型
+		}
+
+		render(){
+			return <div>
+				<h1>爸爸</h1>
+				<Moddle></Moddle>
+			</div>
+		}
+	}
+
+
+	class Moddle extends React.Component{
+		
+		render(){
+			return <div>
+				<h3>儿子</h3>
+				<Smail></Smail>
+			</div>
+		}
+	}
+
+
+
+	class Smail extends React.Component{
+
+		//3 以上来就校验一下父组件传递过来的数据是什么类型的
+		static contextTypes = {
+			msg:PropTypes.string
+		}
+		//4 使用  this.context.msg
+		
+		render(){
+			return <h5>孙子 ---- {this.context.msg}</h5>
+		}
+	}
+
+	ReactDOM.render(
+		<div>
+			<Big></Big>
+		</div>,
+		document.getElementById('app')
+	)
+</script>
+</body>
+</html>

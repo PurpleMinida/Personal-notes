@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	static defaultProps = {}  初始化props属性的默认值，防止外界某些必传属性没有传递问题
+
+	创建阶段
+	this.state = {}  
+		this.state是初始化组件私有数据的，定义在constructor构造函数中，所以this.state会被第一时间初始化，因为只有new class的类就会调用constructor构造器
+	componentWillMount(){}  
+		组件的虚拟DOM将要被挂载，此时虚拟DOM还没被穿件也没有挂载 因为细腻DOM是render中才创建的
+	render(){}
+		虚拟DOM已经创建在内存中，但还没有挂载
+	componentDidMount(){}
+		组件已经挂载了 state上的数据也和页面保持一致了
+
+	运行阶段
+	
+
+
+
+
+
+
+	组件创建阶段
+		只执行一次
+	组件运行阶段
+		state和props的改变触发
+	组件销毁阶段
+		只执行一次
+</body>
+</html>

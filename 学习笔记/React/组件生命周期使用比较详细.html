@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app"></div>
+
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+<script src="https://unpkg.com/prop-types/prop-types.min.js"></script>
+
+<script type="text/babel">
+	class Counter extends React.Component{
+		constructor(props){
+			super(props);
+
+			this.state = {
+				msg:1,
+				msg2:2
+			}
+		}
+
+		//定义默认数据
+		static defaultProps = {
+			initcount:1
+		}
+		//为标签属性传递过来的数据进行类型校验  在V.15.x之前该包和react在一起，之后就被抽离出来了，所以要装yarn add prop-types 包
+		static propTypes = {
+			initcount:PropTypes.number  //PropTypes是import时自己定义的名字
+		}
+
+
+		//没挂载没创建虚拟DOM页面也没有渲染
+		componentWillMount(){
+			//自己定义的当前class内部的函数初始化好了可以调用（相当于vue的created钩子函数）
+		}
+
+		//当render执行完内存中就有虚拟DOM了但是还没有挂载到页面上
+		render(){
+			//拿上面的默认数据
+			return <div>{this.props.initcount}
+					{/*onClick={}是react的事件处理方法，内部可以直接写一个函数，也可以把函数抽离出来，抽离之后this访问*/}
+					<button id="btn" onClick={this.increment}>点我</button>
+					<h3 ref="h3"></h3>
+			</div>
+		}
+
+		increment = () => {
+			this.setState({
+				msg2:15
+			})
+			console.log(this.state)
+		}
+
+		//在render和componentDidMount之间开始挂载虚拟DOM了，到了下面的函数就已经挂载完成了（相当于vue的mounted）
+		componentDidMount(){
+			/*  //这是原生的js事件
+			document.getElementById('btn').onclick = () => {
+				this.setState({ //setState不会整个对象覆盖，只是覆盖相同的属性，改变this.state中私有的值
+					msg:13
+				})
+				console.log(this.state)
+			}  */
+			console.log(this.state)
+		}
+
+
+
+
+react的ref和vue的一样只是没有$符号
+
+
+
+		//必须返回true/false  此时render函数没有被触发，所以虚拟DOM没有被更新，但是页面的state状态被修改了
+		shouldComponentUpdate(nextProps,nextState){
+			//这里this.state.私有数据  只是上一次的值并不是最新的
+			//想要获取最新的值需要通过 参数 nextProps,nextState
+			//nextProps最新的props中的数据
+			//nextState最新的state中的数据
+			console.log(this.state + '上一次数据');
+			console.log(nextState.键 + '上一次数据');
+
+			return true;
+		}
+
+		//组件将要更新  虚拟DOM和页面的内容都是旧的
+		componentWillUpdate(){
+			console.log(this.refs.h3.innerHTML);
+		}
+
+//再次进入render
+//如果在render中写  console.log(this.refs.h3.innerHTML);//此时会报错(因为第一次执行render时也会调用该函数)
+//但是你又想获取 h3.innerHTML 这时就用短路运算 console.log(this.refs.h3 && this.refs.h3.innerHTML)  就不报错了
+//这时页面的元素还是旧的
+
+		//此时页面的和虚拟DOM的元素都是新的
+		componentDidUpdate(){
+
+		}
+
+
+
+
+		//父组件传递给子组件的数据改变触发
+		componentWillReceiveProps(nextProps){
+			//拿怎么父组件向子组件传值呢，这里不好演示，直接写文字
+			定义两个class组件 Father 和 son 这两个逐渐都继承React.component
+			在父组件的render函数中使用子组件的标签 通过属性传值 把父组件的私有state传递给子组件 然后在父组件的任意一个元素添加点击事件来修改父组件的state的值 
+			这时componentWillReceiveProps就会被触发
+			console.log(this.props.组件标签属性名)  旧数据
+			console.log(nextProps.组件标签属性名)  新数据
+		}
+
+
+
+
+	}
+
+	ReactDOM.render(<div>
+		<Counter initcount="哈"/>
+	</div>,document.getElementById('app'))
+</script>
+</body>
+</html>

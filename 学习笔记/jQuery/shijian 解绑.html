@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	on() 的事件用  off()解绑
+	bind()  的事件用  unbind()解绑
+
+off("click")
+unbind("click")
+
+	需要解绑的元素.off(事件名称)
+	需要解绑的元素.unbind(事件名称)
+
+
+	//off()
+		$("#btn1").on("click",function () {
+			alert("nnn");
+		});
+		$("#btn2").on("click",function () {
+			$("#btn1").off("click");
+		});
+
+		$("#btn1").on("click",function () {
+			alert("nnn");
+		});
+		$("#btn2").click(function () {
+			$("#btn1").off("click");
+		});
+
+
+	//bind()
+		$("#btn1").bind("click",function () {
+			alert("nnn");
+		});
+		$("#btn2").bind("click",function () {
+			$("#btn1").unbind("click");
+		});
+
+		$("#btn1").bind("click",function () {
+			alert("nnn");
+		});
+		$("#btn2").click(function () {
+			$("#btn1").unbind("click");
+		});
+
+
+	//delegate()
+		父元素.delegate("子元素/id/class","click",function () {})
+		父元素.undelegate("子元素/id/class","click");
+
+
+
+
+	父子元素没有用delegate绑定事件 用off()解绑时 只解绑自身 用了delegate就会链子元素都解绑
+
+	把子元素解绑 off("click","**")
+	父子都解绑  父.off();
+</script>
+</html>

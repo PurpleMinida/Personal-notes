@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<!-- 传参 -->
+		<router-link to="/login/2/ls">login</router-link>
+		<router-link to="/register">register</router-link>
+
+		<router-view></router-view>
+	</div>
+
+<script src="./vue.js"></script>
+<script src="./vue-router.js"></script>
+<script>
+
+	var login = {
+		template:'<h1>login --- {{$route.params.id}} --- {{$route.params.name}}</h1>',
+		created(){
+			console.log(this.$route);
+		}
+	}
+	var register = {
+		template:'<h1>register</h1>'
+	}
+	var router = new VueRouter({
+		routes:[
+			{path:'/login/:id/:name',component:login},
+			{path:'/register',component:register}
+		]
+	});
+
+
+	var vm = new Vue({
+		el:'#app',
+		router
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+var obj = {
+	//属性 之前  name:'name',
+	//现在   相当于上面
+	name
+
+	//方法
+	fun:function(){}
+	//现在
+	fun(){}
+}

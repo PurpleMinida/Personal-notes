@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+		//判断是不是数组
+		//1.
+		var arr = [];
+		Array.isArray(arr);
+		//2.
+		arr instanceof Array;
+
+		//数组方法(每一个对象都有以下两个方法)
+		toString()  把数组转换成字符串  ,分割  输出
+		valueOf()   打印对象本身
+
+		push()  在原数组后面追加                              @会修改原数组
+		var array = [1,2,3,4];
+		array.push();  // push('name')  push(5,9,8,7)  
+		var r = array.push()                                @返回值是数组长度
+
+		pop() 把数组的最后一个拿走   数组.length会改变         @会修改原数组
+		var last = array.pop();                             @返回被删掉的值
+
+		shift()  取出第一个元素  数组.length会改变            @会修改原数组
+		var first = array.shift();                          @返回被删掉的值
+
+		unshift()  在第一位插入一个元素             			@会修改原数组
+		array.unshift(45);                                  @返回值是数组长度
+
+		reverse()  翻转数组    								@不会修改原数组
+		var newArray = array.reverse();  需要变量接收			@返回一个新数组
+
+		sort()   对数组从小到大排列(字符编码小到大 若要改变排序方式 需要传入一个排序函数)   												@直接修改原数组 
+		array.sort(function (a,b) {
+			return a - b;
+		});                                                   @返回排好序的数组
+		//或者
+		function fun(a,b) {
+			return a - b;
+		}
+		array.sort(fun);
+
+		concat()  连接一个或多个数组   							@不会改变原数组  
+																@返回一个新数组
+		var srr = ['ddd',56,'frf']
+		var drr = [5,9,8,7]
+		var frr = ['sdf','yhj','tgb']
+		srr.concat(drr)  在srr后面连接drr
+		frr.concat(srr,drr)  在frr后连接srr再连接drr
+
+		slice(begin,end)  复制数组                               @不影响原数组  
+																@返回一个新数组
+		begin:从第几个开始 (包括)
+		end: 从第几个结束 (不包括)
+
+		删除数组中的元素											@影响原数组
+		splice(从第几位开始删,删几个)								@返回被删的数组值
+
+		查找数组中的元素	(从前往后找)								@不影响原数组
+		indexOf(需要查找的元素,[从第几位开始找(索引)])				@返回该元素下标 没有就-1
+
+		查找数组中的元素	(从后往前找)								@不影响原数组
+		lastindexOf(需要查找的元素,[从第几位开始找(索引)])   		@返回该元素下标 没有就-1
+
+		把数组的每个元素传进指定函数测试							@不影响原数组
+		every(函数)												@全部通过返回true否则false
+
+		过滤数组中的内容											@不影响原数组
+		filter(函数(参数))									@返回一个由通过元素组成的数组
+
+		把数组的每个元素传进指定函数测试							@不影响原数组
+		forEach(函数)												@undefined
+
+		把数组的每个元素传进指定函数测试							@不影响原数组
+		map(函数)											@一个所有元素经过测试函数的结果
+
+		把数组的每个元素传进指定函数测试						@不影响原数组
+		some(函数)										@true:只要一个或多个通过测试/false
+
+		把数组拼接成字符串通过指定的符号连接					@不影响原数组
+		join('符号')											@返回一个拼接好的字符串
+
+
+
+	</script>
+</body>
+</html>

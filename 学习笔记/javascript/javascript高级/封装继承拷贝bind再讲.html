@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//封装就是函数，对象自己封装的
+
+//以下是继承
+	//拷贝 把对象的成员拷贝到另一个对象
+		var obj1 = {
+			name:'qin',
+			age:18,
+			play:function () {
+				console.log('run');
+			}
+		}
+
+		var obj2 = {
+			name:'fu',
+			age:19,
+			eat:function () {
+				console.log('eat');
+			}
+		}
+
+		//封装一个拷贝函数
+		function extend(parentObj,childObj) {
+			for (var key in parentObj) {
+				if (childObj[key]) {
+					contimue;
+				}
+				childObj[key] = parentObj[key];
+			}
+		}
+		extend(obj1,obj2);
+		console.log(obj2);
+
+
+	//原型继承(不实用)把父对象写进子对象的原型中
+		function child() {
+			this.name = 'lk',
+			this.age = 12,
+			this.sex = '男'
+		}
+		function parent() {
+			this.name = 'ld',
+			this.age = 56,
+			this.sex = '男'
+		}
+		child.prototype = new parent();//把父对象写进子对象的原型中
+		child.prototype.constructor = child;//重新设置constructor属性
+
+
+	//bind返回一个新的函数(不调用函数)   改变this指向
+		function fun(x,y) {
+			console.log(x+y);
+		}
+		var o = {
+			name:'lk'
+		}
+		//要被改变this指向的函数.bind(指向新的对象,参数1,参数2)
+		var f = fun.bind(o,x,y);
+		//不调用函数,所以需要自己调用
+		f();
+
+
+	//call()会自己掉用函数  改变this指向
+		//要被改变this指向的函数.call(指向新的对象,参数1,参数2)
+		fun.call(o,x,y)
+
+
+	//借用构造函数继承(如果在原型中添加的属性和方法无法继承)
+		function Person(name,age,sex) {
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+		}
+		function Student(name,age,sex,score) {
+			//要被改变this指向的函数.call(指向新的对象,参数1,参数2)
+			//以下是吧Person中的this指向Student
+			//以下括号中的this是当前Student对象  所以Person的this被指向Student
+			Person.call(this,name,age,sex)
+			this.score = score;
+		}
+		var s1 = new Student('sd',16,'男',100);
+
+
+	//组合继承(能够继承原型中的属性和方法) = 借用构造函数继承 + 原型继承(让Student的原型等于Person的原型)
+		function Person(name,age,sex) {
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+		}
+		Person.prototype.say = function () {
+			console.log('hihi');
+		}
+		function Student(name,age,sex,score) {
+			//要被改变this指向的函数.call(指向新的对象,参数1,参数2)
+			//以下是吧Person中的this指向Student
+			//以下括号中的this是当前Student对象  所以Person的this被指向Student
+			Person.call(this,name,age,sex)
+			this.score = score;
+		}
+		//让Student的原型等于Person的原型(但是内存中只有一个原型对象，这时无论在父的原型中还是子的原型中添加属性/方法，会在父子原型中都有该属性/方法)
+
+		//Student.prototype = Person.prototype;
+		//这时就有以下这种写法  当子要设置特有的方法时
+		Student.prototype = new Person();
+
+		Student.constructor = Student;
+		var s1 = new Student('sd',16,'男',100);
+</script>
+</html>

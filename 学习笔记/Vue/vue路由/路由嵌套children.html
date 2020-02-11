@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<router-link to="/account">account</router-link>
+		<router-view></router-view>
+	</div>
+
+	<template id="tmpl">
+		<div>
+			<h1>account</h1>
+			<!-- 在父路由的template模板中 要加上父路径 -->
+			<router-link to='/account/login'>login</router-link>
+			<router-link to='/account/register'>register</router-link>
+			<router-view></router-view>
+		</div>
+	</template>
+
+<script src="./vue.js"></script>
+<script src="./vue-router.js"></script>
+<script>
+
+	var login = {
+		template:"<h3>login</h3>"
+	}
+	var register = {
+		template:"<h3>register</h3>"
+	}
+	var account = {
+		template:"#tmpl"
+	}
+
+	var router = new VueRouter({
+		routes:[
+			{
+				path:'/account',
+				component:account,
+				children:[ //children 实现子路由  children的path不能带 / 不然会从根路径查找 就不会包括父路由的路径 这样就会覆盖父路径
+					{path:'login',component:login},
+					{path:'register',component:register}
+				]
+			}
+		]
+	});
+
+
+
+
+	var vm = new Vue({
+		el:'#app',
+		router
+	});
+</script>
+</body>
+</html>

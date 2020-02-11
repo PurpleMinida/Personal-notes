@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<h4>{{msg}}</h4>
+		<!-- v-model 可以使表单元素和M层的双向数据绑定 -->
+		<!-- v-model 只能实现表单元素的双向数据绑定 -->
+		<!-- 比如  input(radio,text,address...) select  checkbox  textarea  -->
+		<input type="text" v-model='msg' >
+	</div>
+
+	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg:'你好'
+			}
+		});
+	</script>
+</body>
+</html>

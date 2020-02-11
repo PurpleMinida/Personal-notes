@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app"></div>
+
+
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<script type="text/babel">
+	class Bindthis extends React.Component{
+		constructor(props){
+			super(props);
+			this.state = {
+				msg:"啦啦"
+			}
+			//bind有返回值  返回一个原函数的拷贝，并拥有指定的this值和初始参数。
+			//bind 不会修改原函数的this指向 所以想要修改 下面就直接给changeMsg2从新赋值
+			this.changeMsg2 = this.changeMsg2.bind(this,'zaifu','zailin')
+		}
+		render(){
+			return <div>
+				<input type="button" value="绑定this传参的方式2" onClick={this.changeMsg2}/>
+				<hr/>
+				<h3>{this.state.msg}</h3>
+			</div>
+		}
+
+		changeMsg2(arg1,arg2){
+			//这里的this指向undefined
+			//上面通过bind修改了this指向，所以下面的this.setState()方法才能用
+			console.log(this)
+			this.setState({
+				msg:'绑定this传参的方式2' + arg1 + arg2
+			})
+		}
+	}
+
+
+	ReactDOM.render(<Bindthis></Bindthis>,document.getElementById('app'))
+</script>
+</body>
+</html>

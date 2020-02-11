@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+1 安装 yarn add react-router-dom   cnpm i react-router-dom -S
+2 导入(按需导入)  import {HashRouter,Route,Link} from 'react-router-dom'
+	HashRouter:表示一个路由的根容器，所有路由相关的东西都会包裹在里面，一个网站只需要使用一次
+	Route:路由规则，有两个属性path，component  相当于vue中的{path:"",component:""}
+	Link:路由连接， 相当于vue的<router-link to=""></router-link>
+组件内部用HashRouter标签作为根元素标签包裹return的内容，而且<HashRouter></HashRouter>内部只能有一个根元素，一个网站只需要使用一次<HashRouter></HashRouter>
+
+
+
+<script type="text/javascript">
+	class App extends React.Component{
+		constuctor(props){
+			super(props);
+			this.state = {};
+		}
+
+		render(){
+			return <HashRouter>
+				<div>
+					<h1>这是APP根组件</h1>
+					<hr/>
+
+					<Link to="/home/lala">首页</Link>&nbsp;&nbsp;
+					<Link to="/movie">电影</Link>&nbsp;&nbsp;
+					<Link to="/about">关于</Link>
+					
+					<hr/>
+
+				    {/*外面导入组件
+						import Home from "./Home.jsx";
+						import Movie from "./Movie.jsx";
+						import About from "./About.jsx";
+				    */}
+					{/*path表示路由，component表示组件
+						vue中还要<router-view></router-view>作为容器
+						react中直接把<Route>标签当做容器
+					*/}
+					{/*路由都是模糊匹配的，只要有一部分匹配成功就会展示当前路由
+						exact属性表示精确匹配
+						:表示匹配参数
+					*/}
+					<Route path="/home" component={Home} exact></Route>
+				{/*加了exact后上面的<Link to="/home/lala">首页</Link>就匹配不到了*/}
+
+					<Route path="/movie/:type/:id" component={Movie}></Route>
+				{/*:表示匹配参数 在Movie组件中console.log(this)可以查看参数在哪
+					参数在this.props.match.params中
+
+					直接找
+					this.props.match.params.type
+					this.props.match.params.id
+
+					也可以把他定义在this.state中
+					this.state = {
+						routeParams:props.match.params
+					}
+				*/}
+
+					<Route path="/about" component={About}></Route>
+				</div>
+			</HashRouter>
+		}
+	};
+</script>
+
+</body>
+</html>

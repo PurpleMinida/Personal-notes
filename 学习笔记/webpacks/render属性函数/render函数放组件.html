@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app"></div>
+
+<script src="./vue.js"></script>
+<script>
+
+	var login = {
+		template:'<h1>这是好h1</h1>'
+	}
+
+	var vm = new Vue({
+		el:'#app',
+		render:function(createElement){  //createElement是一个函数 能够把返回的组件渲染成html结构 
+			return createElement(login);
+			// 返回的模板会替换掉el整个元素
+		}
+	});
+</script>
+</body>
+</html>

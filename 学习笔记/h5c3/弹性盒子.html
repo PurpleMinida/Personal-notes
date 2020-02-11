@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.fuyuansu{
+			display: flex;
+			justify-content: space-between;/*flex-start flex-end center space-around   space-between*/
+
+			
+
+
+
+			/*
+			当父元素容不下时
+			nowrap 不换行 
+			wrap  换行
+			wrap-reverse  上下两行翻转
+			*/
+			flex-wrap: wrap;
+
+
+			/*改变主轴方向
+			row  行
+			column  列
+			row-reverse  行从右到左
+			column-reverse  列从右到左
+			*/
+			flex-direction:column;
+
+
+			/*综合上两个
+				flex-flow: row  warp;
+
+			*/
+
+
+			/*
+				添加在子元素中
+				瓜分父元素剩下部分
+				  子元素占据父容器剩下空间的几分之几 
+					占了剩下的几分之几后再加上自己本来的width
+				   当为0时就是你设置的width的值
+			*/
+			flex-grow: 2;
+
+			/*
+				收缩 使超出的内容收缩回到父容器中
+				值越大收缩越厉害
+				设为0  不收缩  默认为1
+				计算   (需要计算的子元素的本身宽度*flex-shrink)/(剩下所有子元素的宽度*各自的flex-shrink值  再相加)
+			*/
+			flex-shrink: 3;
+
+
+			/*
+				flex:number;占父容器的几等分
+			*/
+			felx:5;
+
+
+
+			/*
+			stretch:是默认值  拉长元素上到下填满父元素
+			baseline:时文本在同一基线
+				align-items:flex-start  flex-end  center stretch baseline;
+
+			对单个元素设置对齐
+			align-self:flex-start  flex-end  center stretch baseline;
+			*/
+		}
+	</style>
+</head>
+<body>
+
+</body>
+</html>

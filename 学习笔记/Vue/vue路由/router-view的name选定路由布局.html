@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		html,body,h1{
+			margin: 0;
+			padding: 0;
+		}
+		.Header{
+			width: 100%;
+			height: 60px;
+			background: pink;
+		}
+		.container{
+			width: 100%;
+			height: 600px;
+			display: flex;
+		}
+		.left{
+			flex: 2;
+			background: yellowgreen;
+		}
+		.main{
+			flex: 8;
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<router-view></router-view>
+		<div class="container">
+			<router-view name='left'></router-view>
+			<router-view name='main'></router-view>
+		</div>
+	</div>
+
+<script src="./vue.js"></script>
+<script src="./vue-router.js"></script>
+<script>
+
+	var Header = {
+		template:'<h1 class="Header">Header</h1>'
+	}
+	var Left = {
+		template:'<h1 class="left">Left</h1>'
+	}
+	var Main = {
+		template:'<h1 class="main">Main</h1>'
+	}
+
+
+	var router = new VueRouter({
+		routes:[
+			{
+				path:'/',components:{ // 可放多个模板
+					'default':Header, //默认显示
+					'left':Left, //键就是上面router-view标签的name值
+					'main':Main
+				}
+			}
+		]
+	});
+
+
+
+	var vm = new Vue({
+		el:'#app',
+		router
+	});
+</script>
+</body>
+</html>

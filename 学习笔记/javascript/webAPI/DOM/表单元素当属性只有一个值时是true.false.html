@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	当元素的属性只有一个值时，而又要通过js设置时就只能是true/false
+
+	其中disabled="disabled"
+		checked="checked"
+		selected="selected"
+	<input id="btn" type="text" disabled="disabled">
+</body>
+<script type="text/javascript">
+	var btn = getElementById('btn');
+	btn.disabled = true;
+</script>
+</html>

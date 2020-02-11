@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+	#one{
+		width: 200px;
+		height: 200px;
+		border: 1px solid red;
+	}
+	#two{
+		width: 200px;
+		height: 200px;
+		border: 1px solid green;
+		margin-top:20px;
+	}
+	#pe{
+		background: orange;
+	}
+</style>
+</head>
+<body>
+    <div id="one">
+    	<!--draggable="true"允许拖拽-->
+    	<p id="pe" draggable="true">拖拽我</p>
+    </div>
+    <div id="two"></div>
+
+    <script>
+    	window.onload=function(){
+    		//被拖元素事件
+    		/*
+				ondrag   拖拽过程调用
+				ondragstart  拖拽开始时触发
+				ondragleave  鼠标离开被拖元素范围触发
+				ondragend    拖拽结束时(鼠标松开)
+    		*/
+
+    		//目标元素事件
+    		/*
+				ondragenter    当拖拽元素进入时
+				ondragover     停留时触发
+				ondrop         松开鼠标时(浏览器默认阻止，在ondragover上调用preventDefault（）方法 防止浏览器)
+				ondrapleave    鼠标离开目标元素范围是触发
+    		*/
+
+
+    		var p = document.querySelector("#pe");
+    		var one = document.querySelector("#one");
+    		var two = document.querySelector("#two");
+
+
+    		//被拖元素
+    		p.ondragstart = function(){
+    			console.log("拖拽开始了  ondragstart");
+    		}
+    		p.ondrag = function(){
+    			//console.log("拖拽过程中   ondrag");
+    		}
+    		p.ondragleave = function(){
+    			console.log("离开原来元素的范围了  ondragleave");
+    		}
+    		p.ondragend = function(){
+    			console.log("拖拽结束了  ondragend");
+    		}
+
+
+    		//目标元素
+    		two.ondragenter = function(){
+    			console.log("进入目标范围了 ondragenter");
+    		}
+    		two.ondragover = function(q){
+    			q.preventDefault();
+    			//console.log("停在目标范围  ondragover");
+    		}
+    		two.ondragleave = function(){
+    			console.log("离开目标范围   ondragleave");
+    		}
+    		two.ondrop = function(){
+    			console.log("放开鼠标了  ondrop");
+    			two.appendChild(p);
+    		}
+
+
+    		//拖回one中
+    		one.ondragover = function(q){
+    			q.preventDefault();
+    		}
+    		one.ondrop = function(){
+    			one.appendChild(p);
+    		}
+
+    	}
+    </script>
+</body>
+</html>

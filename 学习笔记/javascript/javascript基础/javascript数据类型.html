@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	javascript数据类型
+	typeof 变量  打印变量的数据类型
+	number -> int float NaN  isNaN()
+	string
+	Boolean
+	Undefined
+	Null
+
+	转换成string
+	1.  变量.Tostring()方法       Undefined和Null没有该方法
+	2.  string(变量)         Undefined和Null可有方法
+	3.  加法   变量 + ''    加上空字符串
+
+	转换成number
+	1.  Number(变量)    如果有字符就是 NaN   true=1  false=0
+	2.  parseInt(变量)   true = false = NaN   如果有字符就是就获取前面的数字就转换(只能转换前面的数字)
+	3.parseFloat(变量)   和parseInt一样无法转换Boolean类型NaN  从前往后 找非数字截取(第二个.或者其他字符)   只有整数就整数
+	4.  在前面加  +  - 号  但是只能转换纯数字的字符串   也可以转换Boolean类型
+	5.  纯数字的字符串 - 0 (不一定减零 减其他的数会减掉该数值)  加号会字符串拼接 减不了就是NaN
+
+	转换成Boolean
+	1.  Boolean(变量)   其他全是true    '' = 0 = NaN = Undefined = Null = false
+
+
+</body>
+</html>

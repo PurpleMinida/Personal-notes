@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="fristname">
+		<input type="text" v-model="lastname">
+		<!-- 使用时不需要小括号 fullname() -->
+		<input type="text" v-model="fullname">
+		<!-- 缓存起来的fullname -->
+		<p>{{fullname}}</p>
+		<p>{{fullname}}</p>
+		<p>{{fullname}}</p>
+	</div>
+
+
+<script src="./vue.js"></script>
+<script>
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			fristname:'',
+			lastname:''
+		},
+		computed:{ // 当中计算的只会被缓存起来 可在其他地方使用
+			fullname:function () { // 只要内部用到的data中的数据发生改变 就会触发当前函数
+				// 一定要return个东西
+				return this.fristname + this.lastname;
+			}
+		}
+	});
+</script>
+</body>
+</html>

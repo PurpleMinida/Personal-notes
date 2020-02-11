@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		//页面加载完时触发 onload是window.onload的缩写
+		onload = function () {
+			//比如获取元素时就需要等页面全部加载完才能获取到
+			var box = document.getElementById('box');
+		}
+
+		//页面卸载时触发  unload是window.unload的缩写
+		//这时window被冻结 所有的对话框都无法使用
+		//页面刷新 = 页面卸载在重新加载       这时可以看到console.log
+		unload = function () {
+			console.log('bye');
+		}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

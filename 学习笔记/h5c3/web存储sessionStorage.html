@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+	sessionStorage<br/>
+	1.只在当前页面有效<br/>
+	2.关闭页面就删除<br/>
+	<input type="text" id="userName"><br/>
+	<button id="setData">设置数据</button>
+	<button id="getData">读数据</button>
+	<button id="removeData">删除数据</button>
+</body>
+<script>
+	
+	var setData = document.querySelector("#setData");
+	var getData = document.querySelector("#getData");
+	var removeData = document.querySelector("#removeData");
+
+
+/*
+setItem(key,value)设置数据
+getItem(key)读数据
+removeItem(key)删数据
+clear()删除所有数据
+
+*/
+	setData.onclick = function(){
+		var userName = document.querySelector("#userName").value;
+		window.sessionStorage.setItem("UserName",userName);
+	}
+	getData.onclick = function(){
+		alert(window.sessionStorage.getItem("UserName"));
+	}
+	removeData.onclick = function(){
+		window.sessionStorage.removeItem("UserName");
+	}
+</script>
+</html>

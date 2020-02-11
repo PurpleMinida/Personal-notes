@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<!-- v-if 是把元素删除和添加 -->
+		<h3 v-if="flag">v-if</h3>
+		<!-- v-show 是把添加 display:none -->
+		<h3 v-show="flag">v-show</h3>
+		<button @click="toggle">toggle</button>
+	</div>
+
+	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				flag:true
+			},
+			methods:{
+				toggle(){
+					this.flag = !this.flag;
+				}
+			}
+		});
+	</script>
+</body>
+</html>

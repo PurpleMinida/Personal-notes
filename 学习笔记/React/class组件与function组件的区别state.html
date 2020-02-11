@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app"></div>
+
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<script type="text/babel">
+	class Hello extends React.Component{
+	constructor(props){
+		supper(props);
+		//存放自己数据的属性this.state  可读可写的数据
+		this.state = {
+			msg:'私有数据',
+			info:'啦啦'
+		}
+	}
+		render(){
+			return <div>
+				<h1>这是class组件的h1</h1>
+				<h1>{this.props.name}</h1>
+				<h1>{this.props.age}</h1>
+			</div>
+		}
+	}
+	ReactDOM.render(<div>
+			<Hello name="zs" age={15} ></Hello>
+		</div>,document.getElementById('app'));
+
+
+
+
+
+state访问：this.state.内部数据
+
+
+
+
+
+	通过有无state属性判断（this.state定义在constructor中）
+		function组件为无状态组件
+		class有状态组件
+
+
+	class组件有自己生命周期函数
+	function没有生命周期函数
+
+
+</script>
+</body>
+</html>

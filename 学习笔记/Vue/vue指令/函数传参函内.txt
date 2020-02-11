@@ -1,0 +1,1 @@
+<button @click="add(参数)">可以传参数</button>

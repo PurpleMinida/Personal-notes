@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		1.会把整个网页的内容都覆盖掉
+		document.write()
+
+		2.element.innerHTML
+
+		3.1 创建元素(只是创建在内存中 dom中没有 这时可添加事件)
+		document.createElement()
+		3.2 添加到dom树中(添加在最后面)
+		element.appendChild()
+
+		@@appendChild的另一种用法
+		appendChild()  括号中的节点如果是从文档树中获取的  当往其他文档位置添加后会移除原来的节点在添加到文档的其他位置
+		如果不想移除原来的节点 就需要克隆节点 cloneNode(true) 
+			 用法  需要克隆的节点.cloneNode(true/false)
+		true:克隆时连后代一起克隆
+		false:不克隆后代
+		如果想跨文档添加节点
+
+
+
+		1.删除子元素   removeChild()
+		父元素.removeChild(子元素);
+
+
+		// 与appendChild()添加的方法
+		1.在哪个节点之前插入  insertBefore()
+		父节点.insertBefor(要插入的元素,要在哪个节点前插入);
+		2.替换节点  replaceChild()
+		父节点.replaceChild(新节点,要被替换的节点)
+
+	</script>
+</body>
+</html>

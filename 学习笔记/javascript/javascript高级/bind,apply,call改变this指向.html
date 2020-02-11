@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+//call()  会自己调用函数
+	//伪数组(不能使用数组对象的方法，但可以改变this指向来使用数组中的方法)
+	var obj = {
+		0:100,
+		1:10,
+		length:2
+	}
+	Array.prototype.push.call(obj,30);
+	console.dir(obj);
+
+//apply(指向对象,[])   会自己调用函数
+	函数/方法.apply(Math,[]);
+
+//bind(指向对象,参数1...)  不会自己调用函数
+</script>
+</html>

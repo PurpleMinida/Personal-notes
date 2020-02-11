@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<button @click="theget">get</button>
+		<button @click="thepost">post</button>
+		<button @click="thejsonp">jsonp</button>
+	</div>
+
+<script src="./Vue2.6.10.js"></script>
+<script src="./vue-resource1.5.1.js"></script>
+<script>
+	//当每次请求地址的根路径相同时 把根路径定义出来 下面请求时以相对路径开头
+	Vue.http.options.root = 'http://localhost/myhtml/';
+	//下面使用请求时 api前面不能带 / 
+	// this.$http.get('api/xxx');
+	// this.$http.post('api/xxx',{},{});
+	// this.$http.jsonp('api/xxx');
+
+
+	//post的第三个参数定为全局 这时第三个参数就可以不传
+	Vue.http.options.emulateJSON = true;
+	//this.$http.post('api/xxx',{});
+
+	var vm = new Vue({
+		el:'#app',
+		methods:{
+			theget:function(){
+				//this.$http.get()/post()/jsonp()  参数查文档
+				//通过在上面的方法后添加 .then(successCallback,errorCallback) 得到服务器返回的数据
+				//get(url,[option])
+				this.$http.get('http://vue.studyit.io/api/getlunbo').then(function(result){
+					console.log('成功');
+					console.log(result);
+					console.log(result.body);  //ressult.body 得到数据   .data也可以
+				},function(err){
+					console.log('错误');
+					console.log(err);
+				});
+			},
+
+			//post(url,{body},{option}) 三个参数都要传
+			thepost(){
+				// 手动发起的post请求 默认没有表单格式 有的服务器处理不了 这时emulateJSON:true
+				this.$http.post('http://vue.studyit.io/api/post',{},{emulateJSON:true}).then(function(result){
+					console.log(result);
+				},function(){});
+			},
+
+			//jsonp(url,[option])
+			thejsonp(){
+				this.$http.jsonp('url').then(function(){},function(){})
+			}
+		}
+	});
+</script>
+</body>
+</html>

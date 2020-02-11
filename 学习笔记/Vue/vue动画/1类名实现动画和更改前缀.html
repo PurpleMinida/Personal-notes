@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		/* 进入之前和离开之后*/
+		.v-enter,.v-leave-to{
+			opacity:0;
+			transform: translateX(300px);
+		}
+
+		/* 入场和离场过程*/
+		.v-enter-active,.v-leave-active{
+			transition: all 1s ease;
+		}
+
+
+
+		/* 进入之前和离开之后*/
+		.my-enter,.my-leave-to{
+			opacity:0;
+			transform: translateY(300px);
+		}
+
+		/* 入场和离场过程*/
+		.my-enter-active,.my-leave-active{
+			transition: all 1s ease;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<input type="button" value="toogle" @click="flag=!flag">
+		<!-- 用<transition></transition>标签(该标签是vue提供的)包裹 需要动画的元素 -->
+		<transition>
+			<h3 v-if='flag'>这时一个h3</h3>
+		</transition>
+		<hr>
+
+<!-- 上面的类样式是共同的 就是谁用了transition标签就会应用上面的类样式 -->
+<!-- 当我们需要不同的效果是需要给transition一个name属性改变 v- 前缀 -->
+		<input type="button" value="toogle2" @click="flag2=!flag2">
+		<transition name="my">
+			<h6 v-if='flag2'>这时一个h6</h6>
+		</transition>
+	</div>
+
+<script src="./Vue2.6.10.js"></script>
+<script src="./vue-resource1.5.1.js"></script>
+<script>
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			flag:false,
+			flag2:false
+		}
+	});
+</script>
+</body><html>

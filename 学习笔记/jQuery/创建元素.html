@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script>
+	//jquery创建元素
+	var divObj = $("<div id="ID"></div>");
+
+
+	//添加成最后一个子元素  父节点.append()
+	$("#dv").append(divObj);
+	//添加到指定的节点内appendTo(节点) 也是在子元素的最后一个
+	divObj.appendTo($("#dv"));
+	//添加成第一个子元素  父节点.prepend()
+	$("#dv").prepend(divObj);
+	//在哪个兄弟元素后面添加
+	$("#dv").after()
+	//在哪个兄弟元素前面添加
+	$("#dv").before()
+
+
+	//html("<p>创建</p>")  也可这样创建
+</script>
+</html>

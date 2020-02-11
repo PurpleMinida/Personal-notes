@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app"></div>
+
+
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<script type="text/babel">
+	class Bindthis extends React.Component{
+		constructor(props){
+			super(props);
+			this.state = {
+				msg:"啦啦"
+			}
+		}
+		render(){
+			return <div>
+				<input type="button" value="绑定this传参的方式3" onClick={()=>{this.changeMsg3('haifu','hailin')}}/>
+				<hr/>
+				<h3>{this.state.msg}</h3>
+			</div>
+		}
+
+		//这里也可以改成箭头函数
+		changeMsg3(arg1,arg2){
+			this.setState({
+				msg:'绑定this传参的方式3' + arg1 + arg2
+			})
+		}
+	}
+
+
+	ReactDOM.render(<Bindthis></Bindthis>,document.getElementById('app'))
+</script>
+</body>
+</html>

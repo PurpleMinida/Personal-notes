@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<mycom1></mycom1>
+		<hr>
+		<mycom1></mycom1>
+		<hr>
+		<mycom1></mycom1>
+	</div>
+
+	<template id="templ">
+		<div>
+			<input type="button" @click="add" value="+1">
+			<h1>{{count}}</h1>
+		</div>
+	</template>
+<script src="./vue.js"></script>
+<script>
+	Vue.component('mycom1',{
+		template:'#templ',
+		data:function(){
+			return {count:0};
+		},
+		methods:{  //  模板的方法只能在template中使用 template标签里面（不是vue控制的元素）
+			add:function(){
+				this.count++;
+			}
+		}
+	});
+
+	var vm = new Vue({
+		el:'#app',
+		data:{},
+		methods:{}
+	});
+</script>
+</body>
+</html>

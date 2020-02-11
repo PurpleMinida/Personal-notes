@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	$.ajax({
+		//类型只能是get方式
+		type:'get',
+		url:'http://www.myweb.com',
+		dataType:'jsonp',//jsonp类型
+		jsonp:'callback',//callback=emm的callback是默认值(可自定义)  传参(回调函数)时的键值
+		jsonpCallbak:'emm',//回调函数名
+		success:function (data){
+
+		}
+	});
+</script>
+</html>

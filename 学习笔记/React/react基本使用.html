@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	安装两个包react react-dom
+ 	npm i react react-dom -S
+
+
+
+ main.js
+ 	import React from 'react';
+ 	import ReactDOM from 'react-dom';
+
+
+ 	React.createElement()方法创建元素
+ 	参数1：元素
+ 	参数2：属性对象
+ 	参数3(从参数3开始都是子节点)：好多虚拟DOM对象(子节点)
+ 	//比如创建一个<div title="hello" id="div">你好</div>
+ 	var myDiv = React.createElement('div',{title:'hello',id='div'},'你好')
+
+ 	放到html中
+ 	ReactDOM.render('要渲染的虚拟DOM元素','渲染到页面那里去(要dom元素)')
+ 	ReactDOM.render('myDiv',document.getElementById('app'))
+
+
+ index.html
+ 	<div id="app"></div>
+</body>
+</html>

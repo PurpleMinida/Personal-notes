@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+	<div id=demo style="width: 400px;height: 400px;border: 1px solid red;"></div>
+
+</body>
+<script>
+	var demo = document.getElementById("demo");
+
+	function getLocation(){
+		//判断浏览器是否支持定位
+		if(navigator.geolocation){
+			//支持
+			//navigator.geolocation.getCurrentPosition(success,error,option);
+			navigator.geolocation.getCurrentPosition(bbbshow,lllError,{
+				/*
+					enableHighAccuracy:true/false  是否高精度
+					timeout:3000   设置超时时间
+					maximumAge:可以设置浏览器重新获取位置信息的时间间隔
+				*/
+			});
+		}else{
+			demo.innerHTML = "浏览器不支持";
+		}
+		//成功函数
+		function bbbshow(ppp){
+			/*
+				ppp.coords.latitude 维度
+				ppp.coords.longitude 经度
+				ppp.coords.laccuracy 精度
+				ppp.coords.altitude  海拔高度
+			*/
+			//打印
+			demo.innerHTML = "ppp.coords.latitude";
+		}
+		function lllError(ddd){
+			switch(ddd.code){
+				case ddd.PERMISSION_DENIED:
+					demo.innerHTML = "用户拒接定位";
+					break;
+				case ddd.PERMISSION_UNAVAILABLE:
+					demo.innerHTML = "获取不到定位信息";
+					break;
+				case ddd.TIMEOUT:
+					demo.innerHTML = "超时";
+					break;
+				case ddd.UNKNOWN_ERROR:
+					demo.innerHTML = "位置错误";
+					break;
+			}
+		}
+	}
+	getLocation();
+</script>
+</html>

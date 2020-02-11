@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#container{
+			width: 300px;
+			position: relative;
+		}
+		#big{
+			width: 400px;
+			height: 400px;
+			position: absolute;
+			left: 310px;
+			top: 0;
+			display: none;
+			overflow: hidden;
+		}
+		#mask{
+			width: 200px;
+			height: 200px;
+			background:rgba(156,32,1,0.5);
+			position: absolute;
+			top: 0;
+			display: none;
+		}
+		#small{
+			width: 300px;
+			height: 375px;
+			overflow: hidden;
+		}
+		#bigImg{
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="small">
+			<img src="./lin.jpg" width="300px">
+			<div id="mask"></div>
+		</div>
+		<div id="big">
+			<img src="./lin.jpg" id="bigImg" width="800px">
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+
+	//ie会出现闪动是因为事件冒泡
+	//mouseover  mouseout  会触发事件冒泡
+	//mouseenter  mouseleave  不会触发事件冒泡
+
+
+	var smallbox = document.getElementById('small');
+	var mask = document.getElementById('mask');
+	var bigbox = document.getElementById('big');
+	var bigImg = document.getElementById('bigImg');
+	
+	smallbox.onmouseover = function() {
+		mask.style.display = 'block';
+		big.style.display = 'block';
+	}
+	smallbox.onmouseout = function() {
+		mask.style.display = 'none';
+		big.style.display = 'none';
+	}
+
+	smallbox.onmousemove = function (e) {
+		var maskX = e.pageX - smallbox.offsetLeft;
+		var maskY = e.pageY - smallbox.offsetTop;
+		maskX = maskX - mask.offsetWidth / 2;
+		maskY = maskY - mask.offsetHeight / 2;
+
+		maskX = maskX < 0 ? 0 : maskX;
+		maskY = maskY < 0 ? 0 : maskY;
+
+		maskX = maskX > smallbox.offsetWidth - mask.offsetWidth ? smallbox.offsetWidth - mask.offsetWidth : maskX;
+		maskY = maskY > smallbox.offsetHeight - mask.offsetHeight ? smallbox.offsetHeight - mask.offsetHeight : maskY;
+
+		mask.style.left = maskX + 'px';
+		mask.style.top = maskY + 'px';
+
+
+
+		//mask移动的距离 / mask最大能够移动的距离 = 大图片移动的距离 / 大图片最大能够移动的距离
+		//mask最大能够移动的距离
+		var maskMax = smallbox.offsetWidth - mask.offsetWidth;
+		//大图片最大能够移动的距离
+		var bigImgMax = bigImg.offsetWidth - bigbox.offsetWidth;
+
+		// 大图片移动的距离
+		var bigImgX = maskX * bigImgMax / maskMax;
+		var bigImgY = maskY * bigImgMax / maskMax;
+
+		bigImg.style.left = -bigImgX + 'px';
+		bigImg.style.top = -bigImgY + 'px';
+
+	}
+</script>
+</html>

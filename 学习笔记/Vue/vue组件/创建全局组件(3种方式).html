@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<!-- 3 把模板标签写进去 -->
+		<my-com1></my-com1>
+		<mycom></mycom>
+		<fulin></fulin>
+		<qin></qin>
+	</div>
+
+	<template id="tmpl">
+		<!-- 凡是template只能有一个跟元素 -->
+		<div>
+			<h3>啦啦啦</h3>
+			<span>哦哦哦</span>
+		</div>
+	</template>
+
+<script src="./vue.js"></script>
+<script>
+	//创建全局组件
+	//  3 步
+
+	// 1 Vue.extend({}) 拥有一个返回值(返回一个模板对象)
+	var com1 = Vue.extend({
+		// template 只能有一个根元素就是不能有平级的标签
+		template:'<div><h3>这是vue.extend创建组件</h3><span>123</span></div>'
+	});
+	// 2 Vue.component('组件名称(自定义标签名)',创建的模板对象(上面的返回值就是创建的模板对象))
+
+	// 注意：组件名称  mycom   标签名称  <mycom>
+	//				  my-com       	   <my-com>
+	//				  myCom   		   <my-com>
+	Vue.component('my-com1',com1);
+
+
+
+	//也可以这样 直接把第一步合拼到第二步里面
+	Vue.component('mycom',Vue.extend({
+		// template 只能有一个根元素就是不能有平级的标签
+		template:'<div><h3>这是vue.extend创建组件</h3><span>123</span></div>'
+	}));
+
+
+
+
+	// 第二种创建方式 在component的第二个参数传一个对象
+	Vue.component('fulin',{
+		// template 只能有一个根元素就是不能有平级的标签
+		template:'<div><h3>这是vue.component创建组件</h3><span>123</span></div>'
+	});
+
+
+
+
+
+	//第三种创建方式 其实就是因为 template 属性没有智能提示 就把template定义在被vue实例控制的元素外面 然后 template 给个id
+	Vue.component('qin',{
+		template:'#tmpl'
+	});
+
+
+
+	var vm = new Vue({
+		el:'#app'
+	});
+</script>
+</body>
+</html>

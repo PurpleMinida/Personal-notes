@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<h1 style="color: pink">你好</h1>
+		<!-- v-bind 对象   font-weidht 有-所以要用单引号-->
+		<h1 :style="{color:'red','font-weight':200}">你好</h1>
+		<!-- 2 -->
+		<h1 :style="obj1">你好</h1>
+		<!-- 3 数组 -->
+		<h1 :style="[obj1,obj2]">你好</h1>
+	</div>
+
+	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				obj1:{color:'red','font-weight':200},
+				obj2:{background:'pink','text-align':'center'}
+			}
+		});
+	</script>
+</body>
+</html>

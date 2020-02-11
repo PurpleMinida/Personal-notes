@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<button id="btn">11</button>
+</body>
+<script src="./jquery.js"></script>
+<script>
+	$("#btn").click(function () {
+		alert('被点了');
+	});
+	$("#btn").click();
+	//括号中传事件名称focus/click等等
+	$("#btn").trigger("click");
+	$("#btn").triggerHandler("click");
+
+
+</script>
+</html>

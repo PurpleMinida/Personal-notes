@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<mycom1></mycom1>
+	</div>
+
+<script src="./vue.js"></script>
+<script>
+	// 组件也可以有自己的 data 数据
+	Vue.component('mycom1',{
+		template:'<h2>你好---{{msg}}</h2>',
+		// 这里的data是一个函数 函数必须返回一个对象
+		data:function () {
+			return {
+				msg:'这是组件的data'
+			};
+		}
+	});
+
+	var vm = new Vue({
+		el:'#app',
+		data:{},
+		methods:{},
+		filters:{},
+		directives:{},
+		components:{ // 实例内部私有组件  组件名称:{ template:'<>内容<>' }
+			login:{
+				// template:'#templ'
+				template:'<h1>私有login组件</h1>'
+			}
+		}
+	});
+</script>
+</body>
+</html>

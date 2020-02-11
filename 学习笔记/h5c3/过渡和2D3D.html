@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		
+		/*过渡transition 当出现以下事件就会过渡效果
+			元素要有:hover
+					:active
+					:link
+					:visited
+		*/
+
+
+		/*
+			transform  2D   变换之后会还原  要不还原transform-style:flat;保留2d(添加给父元素)
+			移动
+			transform:translate(x,y);  一个数时x  两个数时x,y   也可百分比  移动参照自己的左上角  translateX()  translateY()
+
+			缩放  scale()  scaleX()  scaleY()  元素中心进行缩放
+			transform: scale(2);  1不缩放
+
+
+			旋转 rotate()
+			transform:rotate(30deg);  z轴
+			设置轴心位置
+			transform-origin:left top;
+
+
+			斜切 skew() skewX() skewY()
+			transform:skew(20deg);
+
+
+			同时添加多个transform值时用空格分开(先旋转会把坐标轴也旋转)
+			transform:translate(x,y) rotate(30deg);
+
+		*/
+
+		/*
+			transform  3D  都可针对x,y,z调整  变换之后会还原  要不还原transform-style:preserve-3d;保留3d(添加给父元素)
+			3D移动
+			transform:translate3d(x,y,z);
+
+			3D缩放
+			transform:scale3d(x,y,z);
+
+			3D旋转
+			x:以x轴拉线
+			y:以y轴拉线
+			z:以z轴拉线
+			angle:角度
+			transform:rotate3d(x,y,z,angle);
+		*/
+
+
+		/*
+			观察距离
+			perspective:5px;
+			镜头位置
+			perspective:5px 5px;
+		*/
+	</style>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	报错  无分号
+	(function () {
+		console.log('11');
+	})()
+	//无分号
+	(function () {
+		console.log('22');
+	})()
+
+	正确  有分号
+	(function () {
+		console.log('11');
+	})()
+	//有分号
+	;(function () {
+		console.log('22');
+	})()
+</script>
+</html>

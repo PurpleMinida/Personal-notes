@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<input type="button" value="ref" @click="fun">
+		<h3 ref="myh3">我是h3</h3>
+		<com ref="mycom"></com>
+	</div>
+
+	<script src="./vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			methods:{
+				fun(){
+					// console.log(this.$refs.myh3.innerText);
+					// console.log(this.$refs.mycom.msg);
+					this.$refs.mycom.show();
+				}
+			},
+			components:{
+				com:{
+					template:'<h1>你好</h1>',
+					data(){
+						return {
+							msg:'son msg'
+						};
+					},
+					methods:{
+						show(){
+							console.log("son show");
+						}
+					}
+				}
+			}
+		});
+	</script>
+</body>
+</html>

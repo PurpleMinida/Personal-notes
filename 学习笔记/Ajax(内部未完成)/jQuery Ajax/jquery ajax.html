@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script src="./jquery.js"></script>
+<script>
+	$.ajax({
+		type: 'get',
+		url: './jqueryajax.php?username=' + username,
+		dataType: 'json',
+		success: function (data) {
+			//回调函数
+		}
+	});
+
+	$.ajax({
+		type: 'get',
+		url: './jqueryajax.php',
+		data:{username:username},
+		dataType: 'json',
+		success: function (data) {
+			//回调函数
+		}
+	});
+
+	$.ajax({
+		type: 'post',
+		url: './jqueryajax.php',
+		data:{username:username},
+		dataType: 'json',//xml json text html script jsonp
+		success: function (data) {
+			//回调函数
+		},
+		error:function (data) {
+			//服务器端发生错误触发函数  data为错误信息
+			console.dir(data);
+			alert("服务端发生错误,请与管理员联系");
+		}
+	});
+</script>
+</html>

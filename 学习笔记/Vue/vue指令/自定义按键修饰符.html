@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<!-- 系统只定义了
+				.enter
+				.tab
+				.delete
+				.esc
+				.space
+				.up
+				.down
+				.left
+				.right -->
+		系统自带：
+		<input type="text" @keyup.enter="ku" v-model='vla'>
+
+		<!-- 直接放键盘码  f2 = 113 -->
+		键盘码：
+		<input type="text" @keyup.113="ku" v-model='vla'>
+
+		<!-- 但是键盘码不好记 所以在下面全局中定义对应的键和键盘码 -->
+		<input type="text" @keyup.f2="ku" v-model='vla'>
+	</div>
+
+	<script src="./Vue2.6.10.js"></script>
+	<script>
+
+		//全局键盘码
+		Vue.config.keyCodes.f2 = 113;
+
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				vla:''
+			},
+			methods:{
+				ku:function(){
+					alert(this.vla);
+				}
+			}
+		});
+	</script>
+</body>
+</html>

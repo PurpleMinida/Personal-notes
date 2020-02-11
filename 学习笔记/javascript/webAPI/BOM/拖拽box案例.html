@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#box{
+			width: 200px;
+			height: 200px;
+			background:pink; 
+			position: absolute;
+		}
+		#close{
+			background:yellowgreen;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<span id="close">关闭</span>
+	</div>
+</body>
+<script type="text/javascript">
+	var box = document.getElementById('box');
+	box.onmousedown = function(e) {
+		var x = e.pageX - box.offsetLeft;
+		var y = e.pageY - box.offsetTop;
+		document.onmousemove = function(e) {
+			var boxX = e.pageX - x;
+			var boxY = e.pageY - y;
+
+			box.style.left = boxX + 'px';
+			box.style.top = boxY + 'px';
+		}
+	}
+	box.onmouseup = function () {
+		document.onmousemove = null;
+	}
+
+	var close = document.getElementById('close');
+	close.onclick = function() {
+		box.style.display = 'none';
+	}
+</script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	1.函数中this  -->  Window
+		function fun(){
+			console.log(this);
+		}
+		fun();
+	2.方法中的this  -->  Object
+		var sss = {
+			name:'nihao';
+			eat:function () {
+				console.log(this);
+			}
+		}
+		sss.eat();
+	3.构造函数中的this  -->  就是构造函数创建的对象
+		function Hero(){
+			name:'nihao';
+			eat:function () {
+				console.log(this);
+			}
+		}
+		var ddd = new Hero();
+</body>
+</html>

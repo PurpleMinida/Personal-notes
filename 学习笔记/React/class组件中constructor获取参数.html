@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app"></div>
+
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<script type="text/babel">
+	class Hello extends React.Component{
+	//在constructor中传的参数要props接收
+	constructor(props){
+		//super你懂得
+		supper(props);
+		console.log(props);
+	}
+		render(){
+			return <div>
+				<h1>这是class组件的h1</h1>
+				<h1>{this.props.name}</h1>
+				<h1>{this.props.age}</h1>
+			</div>
+		}
+	}
+	ReactDOM.render(<div>
+			<Hello name="zs" age={15} ></Hello>
+		</div>,document.getElementById('app'))
+</script>
+</body>
+</html>

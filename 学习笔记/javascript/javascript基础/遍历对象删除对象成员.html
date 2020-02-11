@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var obj = {
+			name:'xiao';
+			sex:'nv';
+			age:18;
+			say:function(){
+				console.log('hello');
+			}
+		}
+
+
+		//遍历对象 for in
+		for (var key in obj) {
+			//key是键值对的键
+			console.log(key);
+			console.log(key + ':' + obj[key]);
+		}
+
+		//删除对象的成员
+		delete obj.name;
+		delete obj.say;
+	</script>
+</body>
+</html>

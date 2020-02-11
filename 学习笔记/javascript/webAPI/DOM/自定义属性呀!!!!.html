@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	自定义属性age  sex
+	<div id="box" age="18" sex="man"></div>
+</body>
+	<script type="text/javascript">
+		//获取上面的自定义属性(因为浏览器不知道你的自定义属性，所以没有封装你的自定义属性)
+
+		//但是给了一个    获取该属性的方法getAttribute('');
+		var box = document.getElementById('box');
+		console.log(box.getAttribute('sex'));
+
+		//又给了(该方法不仅可以设置自定义属性   还可以设置已有的id class等属性)     设置该属性的方法setAttribute('键','值')
+		box.setAttribute('baba','fulin')
+
+		//还有移除(该方法不仅可以设置自定义属性   还可以设置已有的id class等属性)    removeAttribute('age');
+		box.removeAttribute('sex');
+	</script>
+</html>
